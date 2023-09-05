@@ -2,7 +2,10 @@
 /servlet/
 /db/
 /login/
+<<<<<<< HEAD
 /filter/
 /dto/
 /dao/
 /beans/
+=======
+>>>>>>> origin/taima

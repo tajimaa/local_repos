@@ -1,5 +1,6 @@
 package login;
 
+<<<<<<< HEAD
 import dao.UsertableDao;
 import dto.UsertableDto;
 
@@ -13,6 +14,11 @@ public class LoginLogic {
 			flag = true;
 		}
 		
+=======
+public class LoginLogic {
+	public static boolean doLogin(String name, String pass) {
+		boolean flag = false;
+>>>>>>> origin/taima
 		return flag;
 	}
 }
