@@ -1,8 +1,11 @@
-package db;
+package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import db.OracleManager;
+import dto.UsertableDto;
 
 public class UsertableDao extends Dao {
 	String dbUser = "sensi";
@@ -11,6 +14,7 @@ public class UsertableDao extends Dao {
 	ResultSet rs = null;
 	OracleManager om = new OracleManager();
 	
+	//一行分を返すメソッド
 	public UsertableDto findRecord(String user) {
 		String sql = "select user, password from usertable where name = '"+ user +"'";
 		UsertableDto dto = null;

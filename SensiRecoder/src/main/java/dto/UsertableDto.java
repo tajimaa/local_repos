@@ -1,15 +1,15 @@
-package db;
+package dto;
 
 public class UsertableDto {
 	String user = null;
 	String pass = null;
     
-	UsertableDto(String user, String pass) {
+	public UsertableDto(String user, String pass) {
 		setUser(user);
 		setPass(pass);
 	}
 	
-	// セッター（setter）メソッド
+	//seter
 
     public void setUser(String user) {
         this.user = user;
@@ -19,8 +19,7 @@ public class UsertableDto {
         this.pass = pass;
     }
 
-    // ゲッター（getter）メソッド
-
+    //geter
     public String getUser() {
         return user;
     }

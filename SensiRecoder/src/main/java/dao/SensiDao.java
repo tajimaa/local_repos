@@ -1,10 +1,12 @@
-package db;
+package dao;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import db.OracleManager;
 
 public class SensiDao extends Dao {
 	String dbUser = "sensi";

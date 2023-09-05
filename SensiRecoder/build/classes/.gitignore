@@ -2,3 +2,7 @@
 /servlet/
 /db/
 /login/
+/filter/
+/dto/
+/dao/
+/beans/

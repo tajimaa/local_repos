@@ -21,7 +21,7 @@ public class OracleManager {
         return cn;
     }
     
-    protected Statement getStatement(String user, String pass) {
+    public Statement getStatement(String user, String pass) {
     	Connection cn = getConnection(user, pass);
     	Statement st = null;
     	
@@ -34,7 +34,7 @@ public class OracleManager {
     	return st;
     }
     
-    protected void closeConnection() {
+    public void closeConnection() {
     	try {
     		if(cn != null) {
     			cn.close();
