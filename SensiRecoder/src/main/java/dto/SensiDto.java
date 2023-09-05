@@ -1,4 +1,4 @@
-package db;
+package dto;
 
 public class SensiDto {
 	String name = null;
@@ -6,6 +6,8 @@ public class SensiDto {
 	String sensitivityb = null;
 	double cm180 = 0.0;
 	double cm360 = 0.0;
+	
+	//seter
 	
     public void setName(String name) {
         this.name = name;
@@ -27,7 +29,7 @@ public class SensiDto {
         this.cm360 = cm360;
     }
 
-    // ゲッター（getter）メソッド
+    //geter
 
     public String getName() {
         return name;
