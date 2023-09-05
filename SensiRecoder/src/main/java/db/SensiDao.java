@@ -58,7 +58,7 @@ public class SensiDao extends Dao {
 	public boolean isUserRegistered(String user) {
 		ArrayList<String> list = new ArrayList<>();
 		
-		String sql ="SELECT username FROM userconf WHERE username ='"+ user +"'";
+		String sql ="SELECT user FROM usertable WHERE user ='"+ user +"'";
 		list = select(sql);
 		
 		if(0 != list.size()) {
@@ -66,7 +66,6 @@ public class SensiDao extends Dao {
 		} else {
 			return false;
 		}
-
 	}
 
 	public void close() {

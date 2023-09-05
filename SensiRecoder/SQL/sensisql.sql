@@ -1,3 +1,6 @@
+drop table sensitable;
+drop table usertable;
+
 CREATE USER sensi
 IDENTIFIED BY sensi
 DEFAULT TABLESPACE users
@@ -6,10 +9,6 @@ TEMPORARY TABLESPACE temp
 
 GRANT DBA TO sensi ;
 GRANT UNLIMITED TABLESPACE TO sensi ;
-
-drop table sensitable;
-
-drop table user;
 
 
 create table usertable(
@@ -27,5 +26,3 @@ create table sensitable (
  cm180	NUMBER(6, 3),
  cm360	NUMBER(6, 3)
 );
- 
-]
