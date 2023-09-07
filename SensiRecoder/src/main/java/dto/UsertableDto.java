@@ -10,7 +10,6 @@ public class UsertableDto {
 	}
 	
 	//seter
-
     public void setUser(String user) {
         this.user = user;
     }

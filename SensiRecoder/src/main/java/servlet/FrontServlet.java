@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		PrintWriter out = res.getWriter();
-		out.println("<html><body>unnti</body></html>");
+		doPost(req, res);
+	}
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		Map<String,String[]> map = req.getParameterMap();
 	}
 }
