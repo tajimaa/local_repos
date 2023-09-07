@@ -4,7 +4,7 @@ import dao.UsertableDao;
 import dto.UsertableDto;
 
 public class LoginLogic {
-	public boolean isLoggedIn(String user, String pass) {
+	public static boolean isLoggedIn(String user, String pass) {
 		boolean flag = false;
 		UsertableDao dao = new UsertableDao();
 		UsertableDto dto = dao.findRecord(user);
