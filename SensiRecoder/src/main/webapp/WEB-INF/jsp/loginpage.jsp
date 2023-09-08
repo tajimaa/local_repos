@@ -4,7 +4,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="app/islogin" method="post">
+    <form action="app/isloginCommand" method="post">
         <table>
             <tr>
                 <td>ID</td>

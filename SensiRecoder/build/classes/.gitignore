@@ -1,5 +1,7 @@
+/calc/
+/dto/
+/filter/
 /commands/
-/login/
-/dao/
-/context/
 /servlet/
+/beans/
+/context/

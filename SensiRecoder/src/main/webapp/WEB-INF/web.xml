@@ -1,30 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>SensiRecoder</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
-  
-  <servlet>
-  	<servlet-name>front</servlet-name>
-  	<servlet-class>servlet.FrontServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>front</servlet-name>
-  	<url-pattern>/app/*</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>login</servlet-name>
-  	<jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>login</servlet-name>
-  	<url-pattern>/loginpage</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>SensiRecoder</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+
+	<filter>
+		<filter-name>sessionfilter</filter-name>
+		<filter-class>filter.SessionFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>sessionfilter</filter-name>
+		<url-pattern>/homepage</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>front</servlet-name>
+		<servlet-class>servlet.FrontServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>front</servlet-name>
+		<url-pattern>/app/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginpage</servlet-name>
+		<jsp-file>/WEB-INF/jsp/loginpage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginpage</servlet-name>
+		<url-pattern>/loginpage</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>homepage</servlet-name>
+		<jsp-file>/WEB-INF/jsp/homepage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>homepage</servlet-name>
+		<url-pattern>/homepage</url-pattern>
+	</servlet-mapping>
 </web-app>
