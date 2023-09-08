@@ -7,7 +7,7 @@ import dto.SensiDto;
 public class UserBean implements Serializable {
 	private String userName = null;
 	private SensiDto sensiDto = null;
-
+	
 	public String getUserName() {
 		return userName;
 	}
