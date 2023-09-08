@@ -16,6 +16,15 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>front</servlet-name>
-  	<url-pattern>/front</url-pattern>
+  	<url-pattern>/app/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>login</servlet-name>
+  	<jsp-file>/WEB-INF/jsp/login.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>login</servlet-name>
+  	<url-pattern>/loginpage</url-pattern>
   </servlet-mapping>
 </web-app>

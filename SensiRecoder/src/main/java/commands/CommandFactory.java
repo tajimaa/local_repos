@@ -12,9 +12,8 @@ public class CommandFactory {
 		AbstractCommand command = null;
 		Properties prop = new Properties();
 		
-		
 		try {
-			prop.load(new FileInputStream("commands.properties"));
+			prop.load(new FileInputStream("C:\\local_repos\\SensiRecoder\\src\\properties\\commands.properties"));
 			String name = prop.getProperty(rc.getCommandPath());
 			Class<?> c = Class.forName(name);
 			command = (AbstractCommand) c.newInstance();

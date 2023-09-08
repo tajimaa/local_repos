@@ -21,15 +21,18 @@ public class FrontServlet extends HttpServlet {
 		doPost(req, res);
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		System.out.println("idddddddd "+req.getParameter("id"));
 		Map<String,String[]> map = req.getParameterMap();
 		
+		req.setCharacterEncoding("UTF-8");
+
 		RequestContext rc = new WebRequestContext();
+		rc.setParameterMap(map);
 		rc.setRequest(req);
-		
 		AbstractCommand command = CommandFactory.getCommand(rc);
 		command.init(rc);
 		
-		ResponseContext resc =command.execute();
+		ResponseContext resc = command.execute();
 		Object bean = resc.getResult();
 		
 		req.setAttribute("data", bean);

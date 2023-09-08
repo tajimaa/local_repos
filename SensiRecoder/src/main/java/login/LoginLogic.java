@@ -9,7 +9,7 @@ public class LoginLogic {
 		UsertableDao dao = new UsertableDao();
 		UsertableDto dto = dao.findRecord(user);
 		
-		if(user.equals(dto.getUser()) && pass.equals(dto.getPass())) {
+		if(dto != null && user.equals(dto.getUser()) && pass.equals(dto.getPass())) {
 			flag = true;
 		}
 		return flag;

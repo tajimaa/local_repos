@@ -1,13 +1,5 @@
-/calc/
-/servlet/
-/db/
-/login/
-<<<<<<< HEAD
-/filter/
-/dto/
-/dao/
-/beans/
-=======
->>>>>>> origin/taima
-/context/
 /commands/
+/login/
+/dao/
+/context/
+/servlet/

@@ -1,39 +1,52 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import db.OracleManager;
 import dto.UsertableDto;
 
 public class UsertableDao extends Dao {
-	String dbUser = "sensi";
-	String dbPass = "sensi";
-	Statement st = null;
-	ResultSet rs = null;
-	OracleManager om = new OracleManager();
-	
-	//一行分を返すメソッド
-	public UsertableDto findRecord(String user) {
-		String sql = "select user, password from usertable where name = '"+ user +"'";
-		UsertableDto dto = null;
-		try {
-			st = om.getStatement(dbUser, dbPass);
-			ResultSet rs = st.executeQuery(sql);
-			rs.next();
-			dto = new UsertableDto(rs.getString(0), rs.getString(1));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(rs != null) {
-					rs.close();
-				}
-			} catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return dto;
-	}
+    OracleManager om = new OracleManager();
+    
+    Connection cn = null;
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    
+    String dbUser = "sensi";
+    String dbPass = "sensi";
+    
+    // 一行分を返すメソッド
+    public UsertableDto findRecord(String user) {
+        System.out.println("findRecord: " + user);
+        UsertableDto dto = null;
+        try {
+            cn = om.getConnection(dbUser, dbPass);
+            pstmt = cn.prepareStatement("SELECT name, password FROM usertable WHERE name = ?");
+            pstmt.setString(1, user);
+            rs = pstmt.executeQuery();
+            if (rs != null && rs.next()) {
+                dto = new UsertableDto(rs.getString(1), rs.getString(2));
+            } else {
+                System.out.println("nullです");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                // pstmt と cn もクローズする必要があります
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return dto;
+    }
 }

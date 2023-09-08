@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class OracleManager {
 	Connection cn = null;
-	private Connection getConnection(String user, String pass) {
+	public Connection getConnection(String user, String pass) {
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
