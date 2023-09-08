@@ -42,7 +42,7 @@ public class GameSensitivity {
 	public static void init() {
 		try {
 			Properties pro = new Properties();
-			pro.load(new FileInputStream("src/properties/games.properties"));
+			pro.load(new FileInputStream("C:\\local_repos\\SensiRecoder\\src\\properties\\game.properties"));
 
 			Iterator<Object> ite = pro.keySet().iterator();
 			while (ite.hasNext()) {

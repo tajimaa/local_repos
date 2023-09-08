@@ -36,7 +36,7 @@ public class FrontServlet extends HttpServlet {
 		Object bean = resc.getResult();
 		
 		req.setAttribute("data", bean);
-		
+		System.out.println("frontservlet: "+resc.getTarget());
 		RequestDispatcher dispatcher = req.getRequestDispatcher(resc.getTarget());
 		dispatcher.forward(req, res);
 		

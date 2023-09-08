@@ -2,14 +2,14 @@
 <html>
 <head><title>Home</title></head>
 <body>
-	<form action="login" method="get">
+	<form action="loginpage" method="get">
 		<input type="submit" value="login" >
 	</form>
-	<form action="createUser" method="get" >
+	<form action="registpage" method="get" >
 		<input type="submit" value="createUser" >
 	</form>
 	<h1>最初のページだよ</h1><br>
-	<form action="front" method="get"> 
+	<form action="app/calcCommand" method="get"> 
 	<table>
 		<tr>
 			<th>ゲーム</th>
@@ -18,12 +18,17 @@
 		</tr>
 		<tr>
 			<th><input type="text" name="game" ></th>
-			<th><input type="number" name="sensi" ></th>
+			<th><input type="number" step="0.001" name="sensi" ></th>
 			<th><input type="number" name="dpi" ></th>
 		</tr>
 	</table>
 	<input type="submit" value="start" >
 	<input type="submit" value="save" >
 	</form>
+	<c:if test="${!empty data}">
+  		cm180: ${data.cm180}
+		cm360: ${data.cm360}
+	</c:if>
+	
 </body>
 </html>

@@ -18,7 +18,14 @@ public class WebRequestContext implements RequestContext {
 	public String getCommandPath() {
 		String path = request.getRequestURI();
 		String[] commandPath = path.split("/");
-		
+		/*
+		if(commandPath[3].equals("app")) {
+			path = commandPath[4];
+		} else {
+			path = commandPath[3];
+		}
+		return path;
+		*/
 		System.out.println("commandPath: "+ commandPath[3]);
 		return commandPath[3];
 	}

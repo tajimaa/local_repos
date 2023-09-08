@@ -48,10 +48,9 @@ public class SessionFilter extends HttpFilter implements Filter {
 			chain.doFilter(request, response);
 		} else {
 			System.out.println("失敗");
-			((HttpServletRequest)request).getRequestDispatcher("/login").forward(request,response);
+			((HttpServletRequest)request).getRequestDispatcher("/loginpage").forward(request,response);
 		}
 		
-		chain.doFilter(request, response);
 	}
 
 	/**

@@ -21,9 +21,8 @@ public class LoginCommand extends AbstractCommand {
 		if (LoginLogic.isLoggedIn(name, pass)) {
 			UserBean bean = new UserBean();
 			bean.setUserName(name);
-			resc.setResult(bean);
 			((WebRequestContext) reqc).setUserBeanInSession(bean);
-			resc.setTarget("show");
+			resc.setTarget("homepage");
 		} else {
 			resc.setTarget("loginpage");
 		}
