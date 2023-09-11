@@ -5,9 +5,9 @@
 	<form action="createUser" method="post">
 		<table>
 			<tr>id</tr><br>
-			<tr><input type="text" value="id"></tr><br>
+			<tr><input type="text" name="id"></tr><br>
 			<tr>パスワード</tr><br>
-			<tr><input type="password" value="password"></tr><br>
+			<tr><input type="password" name="password"></tr><br>
 			<tr><input type="submit" value="登録"><br>
 		</table>
 	</form>
