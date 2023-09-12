@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,27 +17,34 @@ import context.WebRequestContext;
 public class FrontServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		doPost(req, res);
+		doAction(req, res);
 	}
+
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("idddddddd "+req.getParameter("id"));
-		Map<String,String[]> map = req.getParameterMap();
-		
+		doAction(req, res);
+
+	}
+
+	private void doAction(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		Map<String, String[]> map = req.getParameterMap();
+
 		req.setCharacterEncoding("UTF-8");
 
 		RequestContext rc = new WebRequestContext();
 		rc.setParameterMap(map);
 		rc.setRequest(req);
 		AbstractCommand command = CommandFactory.getCommand(rc);
-		command.init(rc);
-		
-		ResponseContext resc = command.execute();
-		Object bean = resc.getResult();
-		
-		req.setAttribute("data", bean);
-		System.out.println("frontservlet: "+resc.getTarget());
-		RequestDispatcher dispatcher = req.getRequestDispatcher(resc.getTarget());
-		dispatcher.forward(req, res);
-		
+
+		if (command != null) {
+			command.init(rc);
+			ResponseContext resc = command.execute();
+			Object bean = resc.getResult();
+			req.setAttribute("data", bean);
+			System.out.println("front target: " + resc.getTarget());
+			req.getRequestDispatcher(resc.getTarget()).forward(req, res);
+
+		} else {
+			res.sendError(HttpServletResponse.SC_NOT_FOUND, "このページは存在しません");
+		}
 	}
 }

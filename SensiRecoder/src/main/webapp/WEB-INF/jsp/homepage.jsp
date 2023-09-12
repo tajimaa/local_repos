@@ -13,7 +13,7 @@
 	</form>
 	<h1>最初のページだよ</h1>
 	<br>
-	<form action="${pageContext.request.contextPath}/app/calcCommand" method="get">
+	<form action="calcCommand" method="get">
 		<table>
 			<tr>
 				<th>ゲーム</th>

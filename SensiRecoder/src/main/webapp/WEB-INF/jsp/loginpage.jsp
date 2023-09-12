@@ -4,7 +4,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="${pageContext.request.contextPath}/app/isloginCommand" method="post">
+    <form action="isloginCommand" method="post">
         <table>
             <tr>
                 <td>ID</td>
