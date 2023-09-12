@@ -40,6 +40,15 @@
 		<servlet-name>homepage</servlet-name>
 		<url-pattern>/homepage</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>registpage</servlet-name>
+		<jsp-file>/WEB-INF/jsp/CreateUser.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>registpage</servlet-name>
+		<url-pattern>/registpage</url-pattern>
+	</servlet-mapping>
 
 
 
