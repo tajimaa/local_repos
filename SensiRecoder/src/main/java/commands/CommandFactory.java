@@ -7,7 +7,7 @@ import java.util.Properties;
 import context.RequestContext;
 
 public class CommandFactory {
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation", "finally" })
 	public static AbstractCommand getCommand(RequestContext rc) {
 		AbstractCommand command = null;
 		Properties prop = new Properties();
@@ -20,12 +20,16 @@ public class CommandFactory {
 			
 		} catch (ClassNotFoundException |IOException e) {
 			e.printStackTrace();
+			command = null;
 		} catch (InstantiationException e) {
 			e.printStackTrace();
+			command = null;
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
+			command = null;
+		} finally {
+			return command;
 		}
 		
-		return command;
 	}
 }
