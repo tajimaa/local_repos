@@ -2,7 +2,7 @@
 <html>
 <head><title>登録画面</title></head>
 <body>
-	<form action="createUser" method="post">
+	<form action="registerCommand" method="post">
 		<table>
 			<tr>id</tr><br>
 			<tr><input type="text" name="id"></tr><br>

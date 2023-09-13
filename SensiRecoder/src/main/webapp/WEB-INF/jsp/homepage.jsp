@@ -116,6 +116,7 @@
     <c:if test="${!empty data}">
         cm180: ${data.cm180}
         cm360: ${data.cm360}
+        ${bean.userName }
     </c:if>
 </body>
 </html>
