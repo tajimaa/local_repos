@@ -2,27 +2,75 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>Home</title>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            text-align: center;
+            margin: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        select, input[type="number"] {
+            padding: 5px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        c\:if {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-	<form action="loginpage" method="get">
-		<input type="submit" value="login">
-	</form>
-	<form action="registpage" method="get">
-		<input type="submit" value="createUser">
-	</form>
-	<h1>最初のページだよ</h1>
-	<br>
-	<form action="calcCommand" method="get">
-		<table>
-			<tr>
-				<th>ゲーム</th>
-				<th>感度</th>
-				<th>dpi</th>
-			</tr>
-			<tr>
-				<th><select name="game">
-						<option value="1v1.LOL">1v1.LOL</option>
+    <form action="loginpage" method="get">
+        <input type="submit" value="login">
+    </form>
+    <form action="registpage" method="get">
+        <input type="submit" value="createUser">
+    </form>
+    <h1>最初のページだよ</h1>
+    <br>
+    <form action="calcCommand" method="get">
+        <table>
+            <tr>
+                <th>ゲーム</th>
+                <th>感度</th>
+                <th>dpi</th>
+            </tr>
+            <tr>
+                <td><select name="game">
+                    <option value="1v1.LOL">1v1.LOL</option>
 						<option value="7_Days_to_Die">7_Days_to_Die</option>
 						<option value="Alliance_of_Valiant_Arms_(AVA)">Alliance_of_Valiant_Arms_(AVA)</option>
 						<option value="Apex_Aim_Trainer">Apex_Aim_Trainer</option>
@@ -57,18 +105,17 @@
 						<option value="Warlander">Warlander</option>
 						<option value="War_Thunder">War_Thunder</option>
 						<option value="World_War_3">World_War_3</option>
-				</select></th>
-				<th><input type="number" step="0.001" name="sensi"></th>
-				<th><input type="number" name="dpi"></th>
-			</tr>
-		</table>
-		<input type="submit" value="start"> <input type="submit"
-			value="save">
-	</form>
-	<c:if test="${!empty data}">
-		cm180: ${data.cm180}
-		cm360: ${data.cm360}
-	</c:if>
-
+                </select></td>
+                <td><input type="number" step="0.001" name="sensi"></td>
+                <td><input type="number" name="dpi"></td>
+            </tr>
+        </table>
+        <input type="submit" value="start"> <input type="submit"
+            value="save">
+    </form>
+    <c:if test="${!empty data}">
+        cm180: ${data.cm180}
+        cm360: ${data.cm360}
+    </c:if>
 </body>
 </html>
