@@ -26,3 +26,12 @@ create table sensitable (
  cm180	NUMBER(6, 3),
  cm360	NUMBER(6, 3)
 );
+
+
+create table devicetable (
+ name	VARCHAR2(100),
+ mouse	VARCHAR2(100),
+ mousepad	VARCHAR2(100),
+ mousesole	VARCHAR2(100),
+ monitor	VARCHAR2(100)
+);
