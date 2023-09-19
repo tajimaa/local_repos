@@ -10,7 +10,7 @@ import dto.UsertableDto;
 
 public class UsertableDao extends Dao {
 	private static final String INSERT_USER = "INSERT INTO usertable (name, password) VALUES (?, ?)";
-	private static final String SELECT_USER_PASS = "SELECT name, password FROM usertable WHERE name = ?";
+	private static final String SELECT_USER_PASS = "SELECT uname, password FROM usertable WHERE uname = ?";
 	private static final String DB_USER = "sensi";
 	private static final String DB_PASS = "sensi";
 	
