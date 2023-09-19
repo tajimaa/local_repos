@@ -9,22 +9,25 @@ import db.OracleManager;
 import dto.UsertableDto;
 
 public class UsertableDao extends Dao {
+	private static final String INSERT_USER = "INSERT INTO usertable (name, password) VALUES (?, ?)";
+	private static final String SELECT_USER_PASS = "SELECT name, password FROM usertable WHERE name = ?";
+	private static final String DB_USER = "sensi";
+	private static final String DB_PASS = "sensi";
+	
     OracleManager om = new OracleManager();
     
     Connection cn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
     
-    String dbUser = "sensi";
-    String dbPass = "sensi";
     
     // 一行分を返すメソッド
     public UsertableDto findRecord(String user) {
         System.out.println("findRecord: " + user);
         UsertableDto dto = null;
         try {
-            cn = om.getConnection(dbUser, dbPass);
-            pstmt = cn.prepareStatement("SELECT name, password FROM usertable WHERE name = ?");
+            cn = om.getConnection(DB_USER, DB_PASS);
+            pstmt = cn.prepareStatement(SELECT_USER_PASS);
             pstmt.setString(1, user);
             rs = pstmt.executeQuery();
             if (rs != null && rs.next()) {
@@ -39,7 +42,6 @@ public class UsertableDao extends Dao {
                 if (rs != null) {
                     rs.close();
                 }
-                // pstmt と cn もクローズする必要があります
                 if (pstmt != null) {
                     pstmt.close();
                 }
@@ -49,4 +51,19 @@ public class UsertableDao extends Dao {
         }
         return dto;
     }
+    
+    public boolean createUser(String name, String pass) {
+        try (Connection connection = om.getConnection(DB_USER, DB_PASS);
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER)) {
+
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, pass);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }  
 }

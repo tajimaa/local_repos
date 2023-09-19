@@ -38,7 +38,14 @@ public class GameSensitivity {
 		double rounding = Math.pow(10, decimals);
 		return Math.round(num * rounding) / rounding;
 	}
-
+	/*
+	private static double getIn360(int dpi, String game, double gameSensitivity) {
+		double inputDegreesPerDot = games.get(game);
+		double in360 = 360 / (dpi * inputDegreesPerDot * gameSensitivity);
+		double rounding = Math.pow(10, 2);
+		return Math.round(in360 * rounding) / rounding;
+	}
+	*/
 	public static void init() {
 		try {
 			Properties pro = new Properties();

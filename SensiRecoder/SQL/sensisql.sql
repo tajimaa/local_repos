@@ -22,7 +22,7 @@ insert into usertable values ('admin', 'pass');
 create table sensitable (
  name	VARCHAR2(100), 
  game	VARCHAR2(100),
- sensitivity	NUMBER(6, 3),
+ n	NUMBER(6, 3),
  cm180	NUMBER(6, 3),
  cm360	NUMBER(6, 3)
 );

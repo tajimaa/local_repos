@@ -15,8 +15,9 @@ public class LoginCommand extends AbstractCommand {
 		ResponseContext resc = new WebResponseContext();
 		
 		String name = reqc.getParameter("id")[0];
-		String pass = reqc.getParameter("password")[0];
 		System.out.println("name: "+ name);
+		String pass = reqc.getParameter("password")[0];
+		System.out.println("pass: "+ pass);
 		
 		if (LoginLogic.isLoggedIn(name, pass)) {
 			UserBean bean = new UserBean();
