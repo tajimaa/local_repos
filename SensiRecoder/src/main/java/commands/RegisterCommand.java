@@ -23,6 +23,7 @@ public class RegisterCommand extends AbstractCommand {
 		
 		dao.executeUpdate(sql);
 		
+		
 		resc.setTarget("/isloginCommand");
 		
 		return resc;
