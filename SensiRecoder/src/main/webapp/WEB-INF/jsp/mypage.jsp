@@ -71,7 +71,7 @@
 <div> 
   モニター     
   <label class="sr-only" for="inlineFormInputName2">モニター</label>
-  <input type="text" name="moniter" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
+  <input type="text" name="monitor" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
 </div> 
   <button type="submit" class="btn btn-primary mb-2">登録</button>
 </form>
