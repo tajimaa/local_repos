@@ -34,6 +34,16 @@ public class OracleManager {
     	return st;
     }
     
+    public void commit() {
+    	try {
+    		if(cn != null) {
+    			cn.commit();
+    		}
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
     public void closeConnection() {
     	try {
     		if(cn != null) {
