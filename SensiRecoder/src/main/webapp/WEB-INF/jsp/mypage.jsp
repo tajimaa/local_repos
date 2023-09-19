@@ -54,22 +54,26 @@
 
 <form class="form-inline">
 <div>
+  マウス
   <label class="sr-only" for="inlineFormInputName2">マウス</label>
   <input type="text" name="mouse" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
 </div>
-<div>  
+<div> 
+  マウスパッド 
   <label class="sr-only" for="inlineFormInputName2">マウスパッド</label>
   <input type="text" name="mousepad" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
 </div>  
 <div>  
+  マウスソール
   <label class="sr-only" for="inlineFormInputName2">マウスソール</label>
   <input type="text" name="mousesole" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
 </div>
-<div>      
+<div> 
+  モニター     
   <label class="sr-only" for="inlineFormInputName2">モニター</label>
   <input type="text" name="moniter" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
 </div> 
-  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+  <button type="submit" class="btn btn-primary mb-2">登録</button>
 </form>
 
 
