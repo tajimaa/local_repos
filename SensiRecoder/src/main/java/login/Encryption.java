@@ -2,7 +2,7 @@ package login;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-public abstract class Encryption {
+public class Encryption {
 	public static String hash(String plain) {
 
         return BCrypt.hashpw(plain, BCrypt.gensalt(12));
