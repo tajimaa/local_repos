@@ -4,6 +4,7 @@ import context.RequestContext;
 import context.ResponseContext;
 import context.WebResponseContext;
 import dao.SensiDao;
+import login.Encryption;
 
 public class RegisterCommand extends AbstractCommand {
 	public ResponseContext execute() {
@@ -13,8 +14,10 @@ public class RegisterCommand extends AbstractCommand {
 		
 		String name = reqc.getParameter("id")[0];
 		String pass = reqc.getParameter("password")[0];
-		
-		String sql = "insert into usertable values ('" + name + "','" + pass + "')";
+
+		String hashed = Encryption.hash(pass);
+
+		String sql = "insert into usertable values ('" + name + "','" + hashed + "')";
 		
 		SensiDao dao = new SensiDao();
 		
