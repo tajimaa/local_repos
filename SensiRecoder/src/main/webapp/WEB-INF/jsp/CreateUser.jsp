@@ -25,7 +25,7 @@
     </a>
 
     <div class="shadow mx-auto mt-5 border border-3 rounded" style="width: 27em; height: 35em;">
-        <form class="form-signin p-5 " action="isloginCommand" method="post" >
+        <form class="form-signin p-5 " action="registerCommand" method="post" >
             <img class="mb-4 rounded" src="./../assets/img/icon.png" alt="" width="72" height="72">
             <h1 class="h5 mb-5 mt-3">SensiRecorderアカウントを作成</h1>
             <label for="inputEmail" class="sr-only">ユーザー名</label>
