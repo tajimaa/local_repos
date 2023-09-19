@@ -14,13 +14,13 @@ public class RegisterCommand extends AbstractCommand {
 		String name = reqc.getParameter("id")[0];
 		String pass = reqc.getParameter("password")[0];
 		
-		String sql = "insert into usertable values (" + name + "," + pass + ")";
+		String sql = "insert into usertable values ('" + name + "','" + pass + "')";
 		
 		SensiDao dao = new SensiDao();
 		
 		dao.executeUpdate(sql);
 		
-		resc.setTarget("/homepage");
+		resc.setTarget("/isloginCommand");
 		
 		return resc;
 	}

@@ -49,6 +49,15 @@
 		<servlet-name>registpage</servlet-name>
 		<url-pattern>/registpage</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>mypage</servlet-name>
+		<jsp-file>/WEB-INF/jsp/mypage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mypage</servlet-name>
+		<url-pattern>/mypage</url-pattern>
+	</servlet-mapping>
 
 
 
