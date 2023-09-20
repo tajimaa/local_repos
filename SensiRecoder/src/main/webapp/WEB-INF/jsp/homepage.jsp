@@ -24,6 +24,8 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
+<!-- icon -->
+	<script src="https://kit.fontawesome.com/c82cac4dcf.js" crossorigin="anonymous"></script>
 	<title>振り向き計算</title>
 </head>
 
@@ -31,7 +33,10 @@
 	<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ヘッダーナビゲーション↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
 	<nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-light p-3">
 		<nav class="navbar navbar-light">
-			<a class="navbar-brand text-dark font-weight-bold ml-lg-4" href="#">SensiRecorder</a>
+			<a class="navbar-brand text-dark font-weight-bold ml-lg-4" href="#">
+				<i class="fa-solid fa-crosshairs fa-xl"></i>
+				SensiRecorder
+			</a>
 		</nav>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -49,12 +54,13 @@
 				<li class="nav-item ml-lg-5"><a class="nav-link text-dark"
 					href="#">他ユーザーのデバイス</a></li>
 				<li class="nav-item ml-lg-5"><a class="nav-link text-dark"
-					href="#">マイページ</a></li>
+					href="myInfoCommand">マイページ</a></li>
 			</ul>
 			<c:if test="${!empty bean}">
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+							<i class="fa-solid fa-circle-user fa-lg"></i>
 							${bean.userName } 
 						</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -63,7 +69,6 @@
 						</div>
 					</li>
 				</ul>
-
 			</c:if>
 			<c:if test="${empty bean}">
 				<div class="navbar-nav mr-5">
@@ -76,7 +81,6 @@
 	</nav>
 	
 	<!-- ここか下にコンテンツを書く -->
-
 	<div class="shadow card mx-auto mt-5" style="width: 40rem;">
 		<div class="card-body p-4">
 			<h5 class="card-title text-center mb-3">振り向き計算</h5>
@@ -153,11 +157,6 @@
 						<label for="inputText4" class="form-label">振り向き360℃</label> <input
 							type="text" step="100" name="dpi" class="form-control"
 							value="${data.cm360}cm" id="readOnlyTextBox" readonly>
-					</div>
-					<div class="col-md-6">
-						<label for="inputText4" class="form-label">eDPI</label> <input
-							type="text" step="100" name="dpi" class="form-control"
-							id="readOnlyTextBox" readonly>
 					</div>
 				</form>
 			</c:if>
