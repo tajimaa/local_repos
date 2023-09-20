@@ -6,6 +6,7 @@ build/
 *.bak
 *.swp
 *~.nib
+*.class
 local.properties
 .settings/
 .loadpath

@@ -40,3 +40,5 @@ create table devicetable (
  monitor	VARCHAR2(100),
  CONSTRAINT FK_device_name FOREIGN KEY(uname) REFERENCES usertable(uname)
 );
+
+insert into devicetable values('takeda', 'ねずみ', 'ネズミパッド', 'ねずみそうる', 'もにたー');

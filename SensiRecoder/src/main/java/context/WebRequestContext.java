@@ -48,4 +48,9 @@ public class WebRequestContext implements RequestContext {
 		session = request.getSession();
 		session.setAttribute("bean", bean);
 	}
+	
+	public UserBean getUserBeanInSession() {
+		session = request.getSession();
+		return (UserBean)session.getAttribute("bean");
+	}
 }
