@@ -12,6 +12,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	crossorigin="anonymous"></script>
@@ -23,12 +24,12 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="style.css">
+	<title>振り向き計算</title>
 </head>
 
 <body style="font-family: 'Noto Sans JP', sans-serif">
 	<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ヘッダーナビゲーション↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
-	<nav class="shadow-sm navbar navbar-expand-lg px-5 p-2">
+	<nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-light p-3">
 		<nav class="navbar navbar-light">
 			<a class="navbar-brand text-dark font-weight-bold ml-lg-4" href="#">SensiRecorder</a>
 		</nav>
@@ -51,9 +52,18 @@
 					href="#">マイページ</a></li>
 			</ul>
 			<c:if test="${!empty bean}">
-				<a href="myInfoCommand">${bean.userName }</a>
-				
-				
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+							${bean.userName } 
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="myInfoCommand">マイページ</a> 
+							<a class="dropdown-item" href="loginpage">ログアウト</a>
+						</div>
+					</li>
+				</ul>
+
 			</c:if>
 			<c:if test="${empty bean}">
 				<div class="navbar-nav mr-5">
@@ -62,20 +72,18 @@
 					<button href="registpage" type="button" class="btn btn-dark">新規登録</button>
 				</div>
 			</c:if>
-
 		</div>
 	</nav>
-	<!-- ここか下にコンテンツを書く -->
 	
-	<form action="calcCommand" method="get">
-		<table>
-			<tr>
-				<th>ゲーム</th>
-				<th>感度</th>
-				<th>dpi</th>
-			</tr>
-			<tr>
-				<td><select name="game">
+	<!-- ここか下にコンテンツを書く -->
+
+	<div class="shadow card mx-auto mt-5" style="width: 40rem;">
+		<div class="card-body p-4">
+			<h5 class="card-title text-center mb-3">振り向き計算</h5>
+			<form class="row g-3 mb-0" action="calcCommand" method="get">
+				<div class="col-12 form-group">
+					<label for="exampleFormControlSelect1">ゲームタイトル</label> <select
+						class="form-control" id="exampleFormControlSelect1" name="game">
 						<option value="1v1.LOL">1v1.LOL</option>
 						<option value="7_Days_to_Die">7_Days_to_Die</option>
 						<option value="Alliance_of_Valiant_Arms_(AVA)">Alliance_of_Valiant_Arms_(AVA)</option>
@@ -111,23 +119,70 @@
 						<option value="Warlander">Warlander</option>
 						<option value="War_Thunder">War_Thunder</option>
 						<option value="World_War_3">World_War_3</option>
-				</select></td>
-				<td><input type="number" step="0.001" name="sensi"></td>
-				<td><input type="number" name="dpi"></td>
-			</tr>
-		</table>
-		<input type="submit" value="start"> <input type="submit"
-			value="save">
-	</form>
-	<c:if test="${!empty data}">
-        cm180: ${data.cm180}
-        cm360: ${data.cm360}
-        ${bean.userName }
-    </c:if>
+					</select>
+				</div>
 
+				<div class="col-md-6">
+					<label for="inputText4" class="form-label">ゲーム内感度</label> <input
+						type="number" step="0.001" name="sensi" class="form-control"
+						id="inputText4">
+				</div>
+				<div class="col-md-6">
+					<label for="inputText4" class="form-label">dpi</label> <input
+						type="number" step="100" name="dpi" class="form-control"
+						id="inputText">
+				</div>
 
+				<div class="col-md-12 mt-5 text-right">
+					<input class="btn btn-primary btn-dark mr-2" type="submit"
+						value="start"> <input class="btn btn-primary btn-dark"
+						type="submit" value="save">
+				</div>
+			</form>
+		</div>
+		<div class="card-footer pb-4">
+			結果
+			<c:if test="${!empty data}">
+				<form class="row g-3 mb-0">
+					<div class="col-md-6">
+						<label for="inputText4" class="form-label">振り向き180℃</label> <input
+							type="text" step="0.001" name="sensi" class="form-control"
+							value="${data.cm180}cm" id="readOnlyTextBox" readonly>
+					</div>
+					<div class="col-md-6">
+						<label for="inputText4" class="form-label">振り向き360℃</label> <input
+							type="text" step="100" name="dpi" class="form-control"
+							value="${data.cm360}cm" id="readOnlyTextBox" readonly>
+					</div>
+					<div class="col-md-6">
+						<label for="inputText4" class="form-label">eDPI</label> <input
+							type="text" step="100" name="dpi" class="form-control"
+							id="readOnlyTextBox" readonly>
+					</div>
+				</form>
+			</c:if>
+
+			<c:if test="${empty data}">
+				<form class="row g-3 mb-0">
+					<div class="col-md-6">
+						<label for="inputText4" class="form-label">振り向き180℃</label> <input
+							type="text" step="0.001" name="sensi" class="form-control" id="readOnlyTextBox" readonly>
+					</div>
+					<div class="col-md-6">
+						<label for="inputText4" class="form-label">振り向き360℃</label> <input
+							type="text" step="100" name="dpi" class="form-control"
+							id="readOnlyTextBox" readonly>
+					</div>
+				</form>
+			</c:if>
+		</div>
+	</div>
+	
+	
 	<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓フッター↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
-	<footer class="footer has-cards fixed-bottom">
+	<div style="margin-bottom: 10em;">
+    </div>
+	<footer class="footer has-cards">
 		<div class="container">
 			<hr>
 			<div class="row align-items-center justify-content-md-between">
