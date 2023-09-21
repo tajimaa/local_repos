@@ -25,6 +25,7 @@ public class SensiDao extends Dao {
 			int columnCount = rsMeta.getColumnCount();
 			System.out.println("columnCount: "+ columnCount);
 			System.out.println("SQL: "+ sql);
+			
 			while (rs.next()) {
 	            for (int i = 1; i <= columnCount; i++) {
 	                result.add(rs.getString(i));

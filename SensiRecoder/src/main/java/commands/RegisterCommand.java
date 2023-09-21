@@ -23,6 +23,9 @@ public class RegisterCommand extends AbstractCommand {
 		
 		dao.executeUpdate(sql);
 		
+		String sql2 = "insert into devicetable(uname) values ('" + name + "')";
+		dao.executeUpdate(sql2);
+		
 		resc.setTarget("/isloginCommand");
 		return resc;
 	}

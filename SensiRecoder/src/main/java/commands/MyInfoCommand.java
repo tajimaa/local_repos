@@ -13,33 +13,40 @@ import dao.SensiDao;
 public class MyInfoCommand extends AbstractCommand {
 	public ResponseContext execute() {
 		
-		ArrayList result = null;
+		ArrayList deviceResult = null;
 		
 		RequestContext reqc = getRequestContext();
 		ResponseContext resc = new WebResponseContext();
 		
 		UserBean bean = ((WebRequestContext)reqc).getUserBeanInSession();
 		
-		
 		System.out.println(bean.getUserName());
 		
-		String sql = "select * from devicetable where uname = '" + bean.getUserName() + "'";
+		String name = bean.getUserName();
+		String sql = "select * from devicetable where uname = '" + name + "'";
 		
 		SensiDao sd = new SensiDao();
 		
-		result = sd.select(sql);
+		deviceResult = sd.select(sql);
+		System.out.println(deviceResult);
 		
-		System.out.println(result);
+		if (deviceResult.isEmpty()) {
+			resc.setTarget("mypage");
+		return resc;
+		}
 		
 		DeviceBean device = new DeviceBean();
 		
-		device.setUserName((String) result.get(0));
-		device.setMouse((String) result.get(1));
-		device.setMousePad((String) result.get(2));
-		device.setMouseSole((String) result.get(3));
-		device.setMonitor((String) result.get(4));
+		device.setUserName((String) deviceResult.get(0));
+		device.setMouse((String) deviceResult.get(1));
+		device.setMousePad((String) deviceResult.get(2));
+		device.setMouseSole((String) deviceResult.get(3));
+		device.setMonitor((String) deviceResult.get(4));
 		
 		System.out.println(device.getUserName());
+		System.out.println(deviceResult.get(2));
+		
+		resc.setResult(device);
 		
 		resc.setTarget("mypage");
 		

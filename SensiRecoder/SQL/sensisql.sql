@@ -18,6 +18,18 @@ create table usertable(
 );
 
 insert into usertable values ('admin', 'pass');
+takeda pass
+tajima 
+tanaka 
+saigou 
+inou
+ishiuchi
+power
+po
+osushi
+
+
+
 
 
 create table sensitable (
@@ -42,3 +54,11 @@ create table devicetable (
 );
 
 insert into devicetable values('takeda', 'ねずみ', 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('tajima', 'ロギクール', 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('tanaka', 'ロジクール', 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('saigou', 'ロジックロール', 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('inou', '12345', 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('ishiuchi', '@;:[ +*]\^||-=/?\.,!"#$%&', 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('power', 'localhost8080', 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('po', 'public static void main() String args[ ]', 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('osushi', null, 'ネズミパッド', 'ねずみそうる', 'もにたー');
