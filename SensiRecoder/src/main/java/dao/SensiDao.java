@@ -1,5 +1,7 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -13,6 +15,8 @@ public class SensiDao extends Dao {
 	String dbPass = "sensi";
 	Statement st = null;
 	ResultSet rs = null;
+	Connection cn = null;
+	PreparedStatement ps = null;
 	OracleManager om = new OracleManager();
 	
 	public ArrayList<String> select(String sql) {
@@ -56,6 +60,16 @@ public class SensiDao extends Dao {
 			e.printStackTrace();
 		}
 		return flag;
+	}
+	
+	public Connection getConnection() {
+		try {
+			cn = om.getConnection(dbUser, dbPass);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cn;
 	}
 	
 	public boolean isUserRegistered(String user) {
