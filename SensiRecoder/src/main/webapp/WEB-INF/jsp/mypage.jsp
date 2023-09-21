@@ -78,11 +78,11 @@
 <div class="shadow card ml-5 mt-5" style="width: 20rem";>
 	<div class="card">
 		<ul class="list-group list-group-flush">
-			<li class="list-group-item">ユーザー名:${device.userName}</li>
-			<li class="list-group-item">マウス:${device.mouse}</li>
-			<li class="list-group-item">マウスパッド:${device.mousePad}</li>
-			<li class="list-group-item">マウスソール:${device.mouseSole}</li>
-			<li class="list-group-item">モニター:${device.monitor}</li>
+			<li class="list-group-item">ユーザー名:${data.userName}</li>
+			<li class="list-group-item">マウス:${data.mouse}</li>
+			<li class="list-group-item">マウスパッド:${data.mousePad}</li>
+			<li class="list-group-item">マウスソール:${data.mouseSole}</li>
+			<li class="list-group-item">モニター:${data.monitor}</li>
 		</ul>
 	</div>
 </div>
