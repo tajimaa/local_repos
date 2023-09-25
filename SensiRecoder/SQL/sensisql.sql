@@ -1,11 +1,11 @@
-CREATE USER sensi
+CREATE USER SensiRecoder
 IDENTIFIED BY sensi
 DEFAULT TABLESPACE users
 TEMPORARY TABLESPACE temp
 /
 
-GRANT DBA TO sensi ;
-GRANT UNLIMITED TABLESPACE TO sensi ;
+GRANT DBA TO SensiRecoder ;
+GRANT UNLIMITED TABLESPACE TO SensiRecoder ;
 
 drop table sensitable;
 drop table usertable;
@@ -66,14 +66,14 @@ create table devicetable (
 );
 
 insert into devicetable values('takeda', 'ねずみ', 'ネズミパッド', 'ねずみそうる', 'もにたー');
-insert into devicetable values('tajima', 'ロギクール', 'ネズミパッド', 'ねずみそうる', 'もにたー');
-insert into devicetable values('tanaka', 'ロジクール', 'ネズミパッド', 'ねずみそうる', 'もにたー');
-insert into devicetable values('saigou', 'ロジックロール', 'ネズミパッド', 'ねずみそうる', 'もにたー');
-insert into devicetable values('inou', '12345', 'ネズミパッド', 'ねずみそうる', 'もにたー');
-insert into devicetable values('ishiuchi', '@;:[ +*]\^||-=/?\.,!"#$%&', 'ネズミパッド', 'ねずみそうる', 'もにたー');
-insert into devicetable values('power', 'localhost8080', 'ネズミパッド', 'ねずみそうる', 'もにたー');
-insert into devicetable values('po', 'public static void main() String args[ ]', 'ネズミパッド', 'ねずみそうる', 'もにたー');
-insert into devicetable values('osushi', null, 'ネズミパッド', 'ねずみそうる', 'もにたー');
+insert into devicetable values('tajima', 'ロギクール', 'すし', 'すべりがいい', '120fps');
+insert into devicetable values('tanaka', 'ロジクール', 'ガラス製のやつ', 'ぶつぶつしてる', '240fps');
+insert into devicetable values('saigou', 'ロジックロール', 'でっかいやつ', '100均のやつ', '360fps');
+insert into devicetable values('inou', '12345', '________><', 'select from emp;', '1022/4/14 12:52:20');
+insert into devicetable values('ishiuchi', '@;:[ +*]\^||-=/?\.,!"#$%&', 'マウスパッド', 'ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ', 'てすとでーた');
+insert into devicetable values('power', 'localhost8080', '''''''''''''''''', 'まうすまうすぱそこんまうす', '2160p');
+insert into devicetable values('po', 'public static void main() String args[ ]', 'いしうち', 'りょう', 'わお');
+insert into devicetable values('osushi', null, 'まぐろ', 'いか', 'さーもん');
 
 col uname format a20
 col mouse format a20

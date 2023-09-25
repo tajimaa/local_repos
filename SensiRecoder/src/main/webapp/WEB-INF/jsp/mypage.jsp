@@ -51,38 +51,20 @@
 	</nav>
 <!-- ここか下にコンテンツを書く -->
 
-
-<form class="form-inline">
-<div>
-  マウス
-  <label class="sr-only" for="inlineFormInputName2">マウス</label>
-  <input type="text" name="mouse" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
-</div>
-<div> 
-  マウスパッド 
-  <label class="sr-only" for="inlineFormInputName2">マウスパッド</label>
-  <input type="text" name="mousepad" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
-</div>  
-<div>  
-  マウスソール
-  <label class="sr-only" for="inlineFormInputName2">マウスソール</label>
-  <input type="text" name="mousesole" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
-</div>
-<div> 
-  モニター     
-  <label class="sr-only" for="inlineFormInputName2">モニター</label>
-  <input type="text" name="monitor" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="">
-</div> 
-  <button type="submit" class="btn btn-primary mb-2">登録</button>
-</form>
 <div class="shadow card ml-5 mt-5" style="width: 20rem";>
 	<div class="card">
 		<ul class="list-group list-group-flush">
-			<li class="list-group-item">ユーザー名:${data.userName}</li>
-			<li class="list-group-item">マウス:${data.mouse}</li>
-			<li class="list-group-item">マウスパッド:${data.mousePad}</li>
-			<li class="list-group-item">マウスソール:${data.mouseSole}</li>
-			<li class="list-group-item">モニター:${data.monitor}</li>
+			
+			<form action="sensi/deviceRegisterCommand" method="get">
+				ユーザー名:<input type="text" class="form-control-plaintext" name="uName" value="${data.userName}">
+				マウス:<input type="text" class="form-control-plaintext" name="mouse" value="${data.mouse}">
+				マウスパッド:<input type="text" class="form-control-plaintext" name="mousePad" value="${data.mousePad}">
+				マウスソール:<input type="text" class="form-control-plaintext" name="mouseSole" value="${data.mouseSole}">
+				モニター:<input type="text" class="form-control-plaintext" name="monitor" value="${data.monitor}">
+				
+				<input class="btn btn-primary btn-dark mr-2" type="submit" value="save">
+			</form>
+			
 		</ul>
 	</div>
 </div>
