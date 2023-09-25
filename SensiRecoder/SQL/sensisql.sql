@@ -37,11 +37,23 @@ create table sensitable (
  registered		DATE 			NOT NULL,
  game			VARCHAR2(100) 	NOT NULL,
  sensitivity	NUMBER(6, 3) 	NOT NULL,
+ dpi			NUMBER(5)		NOT NULL,
  cm180			NUMBER(6, 3) 	NOT NULL,
  cm360			NUMBER(6, 3) 	NOT NULL,
  CONSTRAINT PK_name PRIMARY KEY(uname, registered),
  CONSTRAINT FK_sensi_name FOREIGN KEY(uname) REFERENCES usertable(uname)
 );
+
+insert into sensitable values ('takeda', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('tajima', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('tanaka', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('saigou', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('inou', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('ishiuchi', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('power', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('po', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('osushi', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+
 
 
 create table devicetable (
