@@ -44,15 +44,15 @@ create table sensitable (
  CONSTRAINT FK_sensi_name FOREIGN KEY(uname) REFERENCES usertable(uname)
 );
 
-insert into sensitable values ('takeda', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('tajima', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('tanaka', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('saigou', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('inou', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('ishiuchi', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('power', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('po', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('osushi', default, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('takeda', sysdate, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
+insert into sensitable values ('tajima', sysdate, '1v1.lol', 23, 800, 4.07, 8.13);
+insert into sensitable values ('tanaka', sysdate, 'BattleBit_Remasterd', 82.3, 800, 13.89, 27.78);
+insert into sensitable values ('saigou', sysdate, 'Bttlefield_4', 32.2, 800, 3.17, 6.34);
+insert into sensitable values ('inou', sysdate, 'Borderlands_3', 13.5, 400, 12.1, 24.19);
+insert into sensitable values ('ishiuchi', sysdate, 'Call_of_Duty_BO4', 41.2, 400, 4.21, 8.41);
+insert into sensitable values ('power', sysdate, 'Valorant', 1.2, 1600, 3.4, 6.8);
+insert into sensitable values ('po', sysdate, 'warframe', 0.5, 9800, 4.24, 8.28);
+insert into sensitable values ('osushi', sysdate, 'Arma_3', 0.4, 2400, 7.9, 15.8);
 
 
 
@@ -74,3 +74,11 @@ insert into devicetable values('ishiuchi', '@;:[ +*]\^||-=/?\.,!"#$%&', 'ネズ�
 insert into devicetable values('power', 'localhost8080', 'ネズミパッド', 'ねずみそうる', 'もにたー');
 insert into devicetable values('po', 'public static void main() String args[ ]', 'ネズミパッド', 'ねずみそうる', 'もにたー');
 insert into devicetable values('osushi', null, 'ネズミパッド', 'ねずみそうる', 'もにたー');
+
+col uname format a20
+col mouse format a20
+col mousepad format a20
+col mousesole format a20
+col monitor format a20
+set line 200
+
