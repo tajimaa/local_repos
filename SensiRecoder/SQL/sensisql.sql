@@ -17,8 +17,8 @@ create table usertable(
  password	VARCHAR2(100) 	NOT NULL
 );
 
-
-takeda --名前と同じ
+insert into usertable values ('admin', 'pass');
+takeda pass
 tajima 
 tanaka 
 saigou 
@@ -45,7 +45,6 @@ create table sensitable (
 );
 
 insert into sensitable values ('takeda', sysdate, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
-insert into sensitable values ('takeda', sysdate, 'Apex_Legends', 1.2, 800, 21.65, 43.3);
 insert into sensitable values ('tajima', sysdate, '1v1.lol', 23, 800, 4.07, 8.13);
 insert into sensitable values ('tanaka', sysdate, 'BattleBit_Remasterd', 82.3, 800, 13.89, 27.78);
 insert into sensitable values ('saigou', sysdate, 'Bttlefield_4', 32.2, 800, 3.17, 6.34);
@@ -66,7 +65,6 @@ create table devicetable (
  CONSTRAINT FK_device_name FOREIGN KEY(uname) REFERENCES usertable(uname)
 );
 
-insert into devicetable values('takeda', 'ねずみ', 'ネズミパッド', 'ねずみそうる', 'もにたー');
 insert into devicetable values('takeda', 'ねずみ', 'ネズミパッド', 'ねずみそうる', 'もにたー');
 insert into devicetable values('tajima', 'ロギクール', 'すし', 'すべりがいい', '120fps');
 insert into devicetable values('tanaka', 'ロジクール', 'ガラス製のやつ', 'ぶつぶつしてる', '240fps');
