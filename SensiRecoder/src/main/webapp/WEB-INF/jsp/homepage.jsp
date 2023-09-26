@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@include file="../../../assets/template/header_navbar.jsp"%>
+<%@include file="/assets/template/header_navbar.jsp"%>
 
 <!-- ここか下にコンテンツを書く -->
 <div class="shadow card mx-auto mt-5" style="width: 40rem;">
@@ -61,9 +60,7 @@
 			</div>
 
 			<div class="col-md-12 mt-5 text-right">
-				<input class="btn btn-primary btn-dark mr-2" type="submit"
-					value="start"> <input class="btn btn-primary btn-dark"
-					type="submit" value="save">
+				<input class="btn btn-primary btn-dark" type="submit" value="save">
 			</div>
 		</form>
 	</div>
@@ -84,8 +81,8 @@
 		</form>
 	</div>
 </div>
+
 <script>
-	
 	$(function () {
     var ws = new WebSocket("ws://localhost:8080/SensiRecoder/WebSocketServer");
 
@@ -116,7 +113,7 @@
     $("#textbox1").on('input', function () {
         var value = $("#textbox1").val();
 
-        if(value != null) {
+        if(value !== null) {
        		console.log(value);
         	ws.send("sensi=" + value);
         }
@@ -124,7 +121,7 @@
 
     $("#textbox2").on('input', function () {
         var value = $("#textbox2").val();
-        if(value != null) {
+        if(value !== null) {
         	console.log(value);
         	ws.send("dpi=" + value);
         }
@@ -132,19 +129,16 @@
 
     $("#mySelect").on('change', function () {
         var selectedValue = $("#mySelect").val();
-        if(selectedValue != null) {
+        if(selectedValue !== null) {
         	console.log(selectedValue);
         	ws.send("game=" + selectedValue);
         }
     });
 
-    $(window).unload(function () {
-        ws.onclose();
+    $(window).on('beforeunload', function () {
+        ws.close();
     });
 })
-	
+</script>
 
-	</script>
-
-
-<%@include file="../../../assets/template/fotter.jsp"%>
+<%@include file="/assets/template/fotter.jsp"%>
