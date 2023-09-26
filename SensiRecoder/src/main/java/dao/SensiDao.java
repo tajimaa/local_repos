@@ -58,6 +58,7 @@ public class SensiDao extends Dao {
 			flag = st.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return flag;
 		}
 		return flag;
 	}

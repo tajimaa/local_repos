@@ -51,7 +51,7 @@
 		<div class="collapse navbar-collapse text-dark" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item ml-lg-5 active ">
-					<a class="nav-link text-dark" href="homepage">振り向き計算 
+					<a class="nav-link text-dark" href="<%=request.getContextPath() %>/homepage">振り向き計算 
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>

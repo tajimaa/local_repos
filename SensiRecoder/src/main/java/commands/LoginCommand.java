@@ -10,7 +10,6 @@ import login.LoginLogic;
 
 public class LoginCommand extends AbstractCommand {
 	public ResponseContext execute() {
-		
 		RequestContext reqc = getRequestContext();
 		ResponseContext resc = new WebResponseContext();
 		
@@ -20,7 +19,7 @@ public class LoginCommand extends AbstractCommand {
 		if (LoginLogic.isLoggedIn(name, pass)) {
 			UserBean bean = new UserBean();
 			bean.setUserName(name);
-			((WebRequestContext) reqc).setUserBeanInSession(bean);
+			((WebRequestContext) reqc).setUserBeanInSession(bean);;
 			resc.setTarget("/homepage");
 		} else {
 			resc.setTarget("/loginpage");
