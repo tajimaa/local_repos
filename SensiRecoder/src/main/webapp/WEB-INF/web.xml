@@ -58,15 +58,25 @@
 		<servlet-name>mypage</servlet-name>
 		<url-pattern>/mypage</url-pattern>
 	</servlet-mapping>
-
-
+	
+	<servlet>
+		<servlet-name>userspage</servlet-name>
+		<jsp-file>/WEB-INF/jsp/userspage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userspage</servlet-name>
+		<url-pattern>/userspage</url-pattern>
+	</servlet-mapping>
+	
+	
+<!-- error_page -->	
 
 	<error-page>
 		<error-code>404</error-code>
 		<location>/error/404.html</location>
 	</error-page>
 
-	<!-- zettainikonositaninanimoireruna junnbannkaeruna korosu -->
+<!-- zettainikonositaninanimoireruna junnbannkaeruna korosu -->
 
 	<servlet>
 		<servlet-name>front</servlet-name>
@@ -74,6 +84,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>front</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/sensi/*</url-pattern>
 	</servlet-mapping>
 </web-app>

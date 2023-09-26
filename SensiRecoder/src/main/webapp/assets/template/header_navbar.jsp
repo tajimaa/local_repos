@@ -38,50 +38,48 @@
         </div>
     </div>
 	<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ヘッダーナビゲーション↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
-	<nav
-		class="shadow-sm navbar navbar-expand-lg navbar-light bg-light p-3">
+	<nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-light p-3">
 		<nav class="navbar navbar-light">
 			<a class="navbar-brand text-dark font-weight-bold ml-lg-4" href="#">
 				<i class="fa-solid fa-crosshairs fa-xl"></i> SensiRecorder
 			</a>
 		</nav>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse text-dark"
-			id="navbarSupportedContent">
+		<div class="collapse navbar-collapse text-dark" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item ml-lg-5 active "><a
-					class="nav-link text-dark" href="#">振り向き計算 <span
-						class="sr-only">(current)</span></a></li>
-				<li class="nav-item ml-lg-5"><a class="nav-link text-dark"
-					href="#">他ユーザーのデバイス</a></li>
-				<li class="nav-item ml-lg-5"><a class="nav-link text-dark"
-					href="myInfoCommand">マイページ</a></li>
+				<li class="nav-item ml-lg-5 active ">
+					<a class="nav-link text-dark" href="homepage">振り向き計算 
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item ml-lg-5">
+					<a class="nav-link text-dark" href="<%=request.getContextPath() %>/sensi/userListCommand">他ユーザーのデバイス</a>
+				</li>
+				<li class="nav-item ml-lg-5">
+					<a class="nav-link text-dark" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a>
+				</li>
 			</ul>
 			<c:if test="${!empty bean}">
 				<ul class="navbar-nav">
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle " href="#" id="navbarDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> <i
-							class="fa-solid fa-circle-user fa-lg"></i> ${bean.userName }
-					</a>
-						<div class="dropdown-menu dropdown-menu-right"
-							aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="myInfoCommand">マイページ</a> <a
-								class="dropdown-item" href="loginpage">ログアウト</a>
-						</div></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+							<i class="fa-solid fa-circle-user fa-lg"></i> ${bean.userName }
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a> 
+							<a class="dropdown-item" href="<%=request.getContextPath() %>/loginpage">ログアウト</a>
+						</div>
+					</li>
 				</ul>
 			</c:if>
 			<c:if test="${empty bean}">
 				<div class="navbar-nav mr-5">
-					<span><a href="loginpage"
-						class="mr-2 nav-item nav-link text-dark">ログイン</a></span>
+					<span>
+						<a href="loginpage" class="mr-2 nav-item nav-link text-dark">ログイン</a>
+					</span>
 					<button href="registpage" type="button" class="btn btn-dark">新規登録</button>
 				</div>
 			</c:if>

@@ -16,7 +16,6 @@ public class RegisterCommand extends AbstractCommand {
 		String pass = reqc.getParameter("password")[0];
 
 		String hashed = Encryption.hash(pass);
-		System.out.println("hashed: "+hashed);
 		String sql = "insert into usertable values ('" + name + "','" + hashed + "')";
 		
 		SensiDao dao = new SensiDao();

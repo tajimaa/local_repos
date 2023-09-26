@@ -21,14 +21,9 @@
 
 
 <body class="text-center" style="font-family: 'Noto Sans JP', sans-serif">
-
-    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
-        <div class="container">
-            <span class="skiplink-text">Skip to main content</span>
-        </div>
-    </a>
+    
     <div class="shadow mx-auto mt-5 border border-3 rounded" style="width: 27em; height: 35em;">
-        <form class="form-signin p-5 " action="isloginCommand" method="post" >
+        <form class="form-signin p-5 " action="sensi/isloginCommand" method="post" >
             <img class="mb-4 rounded" src="<%=request.getContextPath() %>/icon.png" alt="" width="72" height="72">
             <h1 class="h5 mb-5 mt-3">SensiRecorderにログイン</h1>
             <label for="inputEmail" class="sr-only">ユーザー名</label>
@@ -40,7 +35,6 @@
             <p class="mt-5 mb-3 text-muted">&copy; 2023 SensiRecorder</p>
         </form>
     </div>
-
 	
 	<!-- Google-login -->
 	<script src="https://apis.google.com/js/platform.js" async defer></script>

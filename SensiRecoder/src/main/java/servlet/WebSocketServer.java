@@ -27,31 +27,31 @@ public class WebSocketServer {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        System.out.println("WebSocket受信: " + message);
         String param[] = message.split("=");
-        System.out.println(param.length);
-        System.out.println(param[1]);
         
-        switch (param[0]){
-        case "game":
-        	game=param[1];
-          
-        	break;
-        case "sensi":
-        	sensi=Double.parseDouble(param[1]);
-          
-        	break;
-        case "dpi":
-        	dpi = Integer.parseInt(param[1]);
-        	break;
-      }
-        double result1 = calc.GameSensitivity.cm180(dpi, game, sensi);
-        double result2 = calc.GameSensitivity.cm360(dpi, game, sensi);
-        StringBuilder mm = new StringBuilder();
-        mm.append(String.valueOf(result1));
-        mm.append(",");
-        mm.append(String.valueOf(result2));
-        broadcast(mm.toString());
+        if(param.length!=1) {
+        	switch (param[0]){
+            case "game":
+            	game=param[1];
+              
+            	break;
+            case "sensi":
+            	sensi=Double.parseDouble(param[1]);
+              
+            	break;
+            case "dpi":
+            	dpi = Integer.parseInt(param[1]);
+            	break;
+        	}
+        	
+        	double result1 = calc.GameSensitivity.cm180(dpi, game, sensi);
+            double result2 = calc.GameSensitivity.cm360(dpi, game, sensi);
+            StringBuilder mm = new StringBuilder();
+            mm.append(String.valueOf(result1));
+            mm.append(",");
+            mm.append(String.valueOf(result2));
+            broadcast(mm.toString());
+        }
     }
 
     @OnClose
