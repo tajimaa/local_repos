@@ -17,9 +17,13 @@ public class WebRequestContext implements RequestContext {
 	@Override
 	public String getCommandPath() {
 		String path = request.getRequestURI();
-		String[] commandPath = path.split("/");
 		
-		return commandPath[3];
+		/*String[] commandPath = path.split("/");
+		System.out.println(commandPath[3]);*/
+		
+		String target= path.replace("sensi", "").replace("SensiRecoder", "").replace("/","");
+		System.out.println(path.replace("sensi", "").replace("SensiRecoder", "").replace("/",""));
+		return target;
 	}
 
 	@Override
