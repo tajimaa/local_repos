@@ -23,7 +23,10 @@
 <body class="text-center" style="font-family: 'Noto Sans JP', sans-serif">
     
     <div class="shadow mx-auto mt-5 border border-3 rounded" style="width: 27em; height: 35em;">
-        <form class="form-signin p-5 " action="sensi/isloginCommand" method="post" >
+    	<div class="alert alert-secondary" role="alert">
+  A simple secondary alert—check it out!
+</div>
+        <form class="form-signin p-5 " action="<%=request.getContextPath() %>/sensi/isloginCommand" method="post" >
             <img class="mb-4 rounded" src="<%=request.getContextPath() %>/icon.png" alt="" width="72" height="72">
             <h1 class="h5 mb-5 mt-3">SensiRecorderにログイン</h1>
             <label for="inputEmail" class="sr-only">ユーザー名</label>
@@ -31,7 +34,7 @@
             <label for="inputPassword"  class="sr-only">パスワード</label>
             <input type="password" name="password" id="inputPassword" class="form-control mb-5" placeholder="パスワード" required>
             <button class="btn btn-lg btn-primary btn-block btn-dark" type="submit">ログイン</button>
-            <div class="text-muted "><small>アカウントがない場合は <a class="text-success font-weight-700" href="registpage">こちら</a></small></div>
+            <div class="text-muted "><small>アカウントがない場合は <a class="text-success font-weight-700" href="<%=request.getContextPath() %>/registpage">こちら</a></small></div>
             <p class="mt-5 mb-3 text-muted">&copy; 2023 SensiRecorder</p>
         </form>
     </div>

@@ -8,13 +8,15 @@ public class LoginLogic {
 		boolean flag = false;
 		UsertableDao dao = new UsertableDao();
 		UsertableDto dto = dao.findRecord(user);
-		System.out.println(user);
-		String hashedpass = dto.getPass();
-		
-		System.out.println("loginlogic :" + dto.getPass());
-		
-		if(dto != null && user.equals(dto.getUser()) && Encryption.check(pass, hashedpass)) {
-			flag = true;
+		if (dto != null) {
+			
+			String hashedpass = null;
+			hashedpass = dto.getPass();
+			System.out.println("loginlogic :" + dto.getPass()); 
+			
+			if(dto != null && user.equals(dto.getUser()) && Encryption.check(pass, hashedpass)) {
+				flag = true;
+			}	
 		}
 		return flag;
 	}

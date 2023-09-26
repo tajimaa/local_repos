@@ -22,7 +22,6 @@ public class WebRequestContext implements RequestContext {
 		System.out.println(commandPath[3]);*/
 		
 		String target= path.replace("sensi", "").replace("SensiRecoder", "").replace("/","");
-		System.out.println(path.replace("sensi", "").replace("SensiRecoder", "").replace("/",""));
 		return target;
 	}
 

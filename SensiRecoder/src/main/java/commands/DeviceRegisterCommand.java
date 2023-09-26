@@ -57,7 +57,7 @@ public class DeviceRegisterCommand extends AbstractCommand {
 			e.printStackTrace();
 		}
 			
-		resc.setTarget("/myInfoCommand");
+		resc.setTarget("/sensi/myInfoCommand");
 		
 		return resc;
 	}
