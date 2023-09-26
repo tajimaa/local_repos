@@ -82,6 +82,13 @@ col mouse format a20
 col mousepad format a20
 col mousesole format a20
 col monitor format a20
+col registerd format a30
+col game format a20
+col sensitivity format a40
+col dpi format a40
+col cm180 format a40
+col cm360 format a40
+col password format a70
 set line 200
 
 
