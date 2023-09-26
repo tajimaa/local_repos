@@ -13,7 +13,7 @@ import dao.SensiDao;
 public class MyInfoCommand extends AbstractCommand {
 	public ResponseContext execute() {
 		
-		ArrayList deviceResult = null;
+		ArrayList<String> deviceResult = null;
 		
 		RequestContext reqc = getRequestContext();
 		ResponseContext resc = new WebResponseContext();
@@ -31,7 +31,7 @@ public class MyInfoCommand extends AbstractCommand {
 		System.out.println(deviceResult);
 		
 		if (deviceResult.isEmpty()) {
-			resc.setTarget("mypage");
+			resc.setTarget("/mypage");
 		return resc;
 		}
 		
@@ -48,7 +48,7 @@ public class MyInfoCommand extends AbstractCommand {
 		
 		resc.setResult(device);
 		
-		resc.setTarget("mypage");
+		resc.setTarget("/mypage");
 		
 		return resc;
 	}
