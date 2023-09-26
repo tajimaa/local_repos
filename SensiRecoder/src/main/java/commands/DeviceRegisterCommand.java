@@ -3,8 +3,11 @@ package commands;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import context.RequestContext;
 import context.ResponseContext;
+import context.WebResponseContext;
 import dao.SensiDao;
 		
 
@@ -16,26 +19,47 @@ public class DeviceRegisterCommand extends AbstractCommand {
 	
 	public ResponseContext execute() {
 		
-		Connection cn = sd.getConnection(); 
+		System.out.println("こっちきてるよ");
 		
+		RequestContext reqc = getRequestContext();
+		ResponseContext resc = new WebResponseContext();
 		
-		for (int i = 0; i < 5; i++) {
+		ArrayList<String> keys = new ArrayList<String>();
 		
-			String sql = "update set devicetable(?) = (?)";
+		keys.add("uName");
+		keys.add("mouse");
+		keys.add("mousePad");
+		keys.add("mouseSole");
+		keys.add("monitor");
+		
+		try {
 			
-			try {
-				PreparedStatement ps = cn.prepareStatement(sql);
+			Connection cn = sd.getConnection();
+		
+			for (int i = 0; i < 5; i++) {
+		
+				String sql = "update set devicetable(?) = (?)";
 				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+				String parameter = reqc.getParameter(keys.get(i))[0];
 			
-			
-			
-			SensiDao sd = new SensiDao();
+				PreparedStatement ps = cn.prepareStatement(sql);
+				ps.setString(1, keys.get(i));
+				ps.setString(2, parameter);
+				
+				if (parameter == null) {
+					continue;
+				}
+				
+				sd.executeUpdate(sql);
+				
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+			
+		resc.setTarget("/myInfoCommand");
 		
-		
-		
+		return resc;
 	}
+		
 }
