@@ -17,8 +17,7 @@ create table usertable(
  password	VARCHAR2(100) 	NOT NULL
 );
 
-insert into usertable values ('admin', 'pass');
-takeda pass
+takeda 名前と同じ
 tajima 
 tanaka 
 saigou 
