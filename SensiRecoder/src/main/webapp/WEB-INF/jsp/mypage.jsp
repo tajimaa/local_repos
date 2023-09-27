@@ -8,7 +8,8 @@
 		<ul class="list-group list-group-flush">
 			
 			<form action="sensi/deviceRegisterCommand" method="get">
-				ユーザー名:<input type="text" class="form-control-plaintext" name="uName" value="${data.userName}">
+				ユーザー名:<br>
+				${data.userName}<br>
 				マウス:<input type="text" class="form-control-plaintext" name="mouse" value="${data.mouse}">
 				マウスパッド:<input type="text" class="form-control-plaintext" name="mousePad" value="${data.mousePad}">
 				マウスソール:<input type="text" class="form-control-plaintext" name="mouseSole" value="${data.mouseSole}">

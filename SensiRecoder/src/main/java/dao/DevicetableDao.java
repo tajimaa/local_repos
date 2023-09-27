@@ -12,7 +12,7 @@ import db.OracleManager;
 
 public class DevicetableDao {
 	private static final String SELECT_ALL = "select * from devicetable";
-	private static final String DB_USER = "sensi";
+	private static final String DB_USER = "sensirecoder";
 	private static final String DB_PASS = "sensi";
 	
     OracleManager om = new OracleManager();

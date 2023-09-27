@@ -3,7 +3,6 @@ package commands;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import context.RequestContext;
 import context.ResponseContext;
@@ -24,27 +23,27 @@ public class DeviceRegisterCommand extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 		ResponseContext resc = new WebResponseContext();
 		
-		ArrayList<String> keys = new ArrayList<String>();
-		
-		keys.add("uName");
-		keys.add("mouse");
-		keys.add("mousePad");
-		keys.add("mouseSole");
-		keys.add("monitor");
+		String[] devices = {"uName", "mouse", "mousepad", "mousesole", "monitor"};
 		
 		try {
 			
 			Connection cn = sd.getConnection();
 		
-			for (int i = 0; i < 5; i++) {
+			for (int i = 1; i < 4; i++) {
 		
-				String sql = "update set devicetable(?) = (?)";
+				String sql = "update devicetable set" + devices[i] + " = ? where uname = ?";
 				
-				String parameter = reqc.getParameter(keys.get(i))[0];
+				String device = devices[i];
+				
+				System.out.println(device);
+				
+				String parameter = reqc.getParameter(device)[0];
+				
+				System.out.println(parameter);
 			
 				PreparedStatement ps = cn.prepareStatement(sql);
-				ps.setString(1, keys.get(i));
-				ps.setString(2, parameter);
+				ps.setString(1, parameter);
+				ps.setString(2, reqc.getParameter("uName")[0]);
 				
 				if (parameter == null) {
 					continue;
