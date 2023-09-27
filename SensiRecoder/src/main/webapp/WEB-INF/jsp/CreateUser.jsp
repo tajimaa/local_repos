@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>login</title>
+    <title>register</title>
 </head>
 
 
@@ -24,16 +24,21 @@
         </div>
     </a>
 
-    <div class="shadow mx-auto mt-5 border border-3 rounded" style="width: 27em; height: 35em;">
+    <div class="shadow mx-auto mt-5 border border-3 rounded" style="width: 27em; min-height: 35em;">
         <form class="form-signin p-5 " action="sensi/registerCommand" method="post" >
             <img class="mb-4 rounded" src="<%=request.getContextPath() %>/icon.png" alt="" width="72" height="72">
             <h1 class="h5 mb-5 mt-3">SensiRecorderアカウントを作成</h1>
+            
+            <c:if test="${data eq 'miss'}">
+            	<p class="text-danger">このユーザー名は既に使われています。</p>
+    		</c:if>
+    		
             <label for="inputEmail" class="sr-only">ユーザー名</label>
             <input type="text" name="id" id="inputEmail" class="form-control mb-1" placeholder="ユーザー名" required autofocus>
             <label for="inputPassword"  class="sr-only">パスワード</label>
             <input type="password" name="password" id="inputPassword" class="form-control mb-5" placeholder="パスワード" required>
             <button class="btn btn-lg btn-primary btn-block btn-dark" type="submit">作成</button>
-            <div class="text-muted mt-2 "><small>ログインは <a class="text-success font-weight-700" href="loginpage">こちら</a></small></div>
+            <div class="text-muted mt-2 "><small>ログインは <a class="text-success font-weight-700" href="<%=request.getContextPath() %>/loginpage">こちら</a></small></div>
             <p class="mt-5 mb-3 text-muted">&copy; 2023 SensiRecorder</p>
         </form>
     </div>

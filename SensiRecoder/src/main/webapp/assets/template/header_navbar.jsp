@@ -28,38 +28,63 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 	crossorigin="anonymous"></script>
+
+<style>
+.navigation a{
+    position: relative;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: rgb(213, 128 , 255);
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scale(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform:scale(1);
+}
+
+</style>
 	
 <title>振り向き計算</title>
 </head>
 <body style="font-family: 'Noto Sans JP', sans-serif">
-	<div class="loading">
-        <div class="loading-wrap">
-            <i class="fas fa-spinners fa-3x fa-spin"></i>
-        </div>
-    </div>
 	<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ヘッダーナビゲーション↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
-	<nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-light p-3">
+	<nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-light p-2 px-5">
 		<nav class="navbar navbar-light">
-			<a class="navbar-brand text-dark font-weight-bold ml-lg-4" href="#">
-				<i class="fa-solid fa-crosshairs fa-xl"></i> SensiRecorder
+			<a class="navbar-brand text-dark font-weight-bold ml-lg-4" href="#" >
+    			<i class="fa-solid fa-crosshairs fa-xl"></i> 
+    			<a style="color: rgb(213, 128 , 255); font-size: 24px; font-weight: 700;">Sensi</a><a style="font-size: 24px; font-weight: 700;">Recorder</a>
 			</a>
+
 		</nav>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		<div class="collapse navbar-collapse text-dark" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item ml-lg-5 active ">
-					<a class="nav-link text-dark" href="<%=request.getContextPath() %>/homepage">振り向き計算 
+			<ul class="navbar-nav mr-auto navigation">
+				<li class="nav-item ml-lg-1 active ">
+					<a class="nav-link text-dark ml-lg-1" href="<%=request.getContextPath() %>/homepage">振り向き計算 
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
-				<li class="nav-item ml-lg-5">
-					<a class="nav-link text-dark" href="<%=request.getContextPath() %>/sensi/userListCommand">他ユーザーのデバイス</a>
+				<li class="nav-item ml-lg-1">
+					<a class="nav-link text-dark ml-lg-1" href="<%=request.getContextPath() %>/sensi/userListCommand">他ユーザーのデバイス</a>
 				</li>
-				<li class="nav-item ml-lg-5">
-					<a class="nav-link text-dark" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a>
+				<li class="nav-item ml-lg-1">
+					<a class="nav-link text-dark ml-lg-1" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a>
 				</li>
 			</ul>
 			<c:if test="${!empty bean}">
@@ -71,6 +96,15 @@
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a> 
 							<a class="dropdown-item" href="<%=request.getContextPath() %>/loginpage">ログアウト</a>
+							<c:if test="${bean.userName eq 'jibiki'}">
+								<a class="dropdown-item" href="<%=request.getContextPath() %>/chat">ログアウト</a>
+							</c:if>
+							<c:if test="${bean.userName eq 'tajima'}">
+								<a class="dropdown-item" href="<%=request.getContextPath() %>/chat">チャット</a>
+							</c:if>
+							<c:if test="${bean.userName eq 'takeda'}">
+								<a class="dropdown-item" href="<%=request.getContextPath() %>/chat">チャット</a>
+							</c:if>
 						</div>
 					</li>
 				</ul>

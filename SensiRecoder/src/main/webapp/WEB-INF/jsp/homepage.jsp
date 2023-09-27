@@ -3,9 +3,21 @@
 <%@include file="/assets/template/header_navbar.jsp"%>
 
 <!-- ここか下にコンテンツを書く -->
-<div class="shadow card mx-auto mt-5" style="width: 40rem;">
-	<div class="card-body p-4">
-		<h5 class="card-title text-center mb-3">振り向き計算</h5>
+
+<div class="mt-5">
+	<div class="card mx-auto " style="width:1000px; border-radius: 15px;overflow:hidden;">
+  <div class="row no-gutters" >
+    <div class="col-md-6 p-4" style="background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);">
+      	<div class="card-title text-center">
+      		<img class="rounded" src="<%=request.getContextPath() %>/icon.png" width="72" height="72">
+      	</div>
+      	<h4>SensiRecorder</h4>
+      	<p>振り向き計算ができるツールです。</p>
+      	<p>対応ゲーム</p>
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h5 class="card-title text-center mb-3">振り向き計算</h5>
 		<form class="row g-3 mb-0" action="calcCommand" method="get">
 			<div class="col-12 form-group">
 				<label for="exampleFormControlSelect1">ゲームタイトル</label> <select
@@ -63,8 +75,6 @@
 				<input class="btn btn-primary btn-dark" type="submit" value="save">
 			</div>
 		</form>
-	</div>
-	<div class="card-footer pb-4">
 		結果
 		<div id="chatlog"></div>
 		<form class="row g-3 mb-0">
@@ -79,9 +89,12 @@
 					id="textbox20" readonly>
 			</div>
 		</form>
-	</div>
+      </div>
+    </div>
+  </div>
 </div>
-
+</div>
+	
 <script>
 	$(function () {
     var ws = new WebSocket("ws://localhost:8080/SensiRecoder/WebSocketServer");

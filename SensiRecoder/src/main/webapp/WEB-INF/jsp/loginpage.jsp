@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="ja">
 
@@ -22,17 +23,19 @@
 
 <body class="text-center" style="font-family: 'Noto Sans JP', sans-serif">
     
-    <div class="shadow mx-auto mt-5 border border-3 rounded" style="width: 27em; height: 35em;">
-    	<div class="alert alert-secondary" role="alert">
-  A simple secondary alert—check it out!
-</div>
+    <div class="shadow mx-auto mt-5 border border-3 rounded" style="width: 27em; min-height: 35em;">
         <form class="form-signin p-5 " action="<%=request.getContextPath() %>/sensi/isloginCommand" method="post" >
             <img class="mb-4 rounded" src="<%=request.getContextPath() %>/icon.png" alt="" width="72" height="72">
             <h1 class="h5 mb-5 mt-3">SensiRecorderにログイン</h1>
+            
+            <c:if test="${data eq 'miss'}">
+            	<p class="text-danger">ユーザIDとパスワードが一致しません。</p>
+    		</c:if>
+    		
             <label for="inputEmail" class="sr-only">ユーザー名</label>
             <input type="text" name="id" id="inputEmail" class="form-control mb-1" placeholder="ユーザー名" required autofocus>
             <label for="inputPassword"  class="sr-only">パスワード</label>
-            <input type="password" name="password" id="inputPassword" class="form-control mb-5" placeholder="パスワード" required>
+            <input type="password" name="password" id="inputPassword" class="form-control  mb-5" placeholder="パスワード" required>
             <button class="btn btn-lg btn-primary btn-block btn-dark" type="submit">ログイン</button>
             <div class="text-muted "><small>アカウントがない場合は <a class="text-success font-weight-700" href="<%=request.getContextPath() %>/registpage">こちら</a></small></div>
             <p class="mt-5 mb-3 text-muted">&copy; 2023 SensiRecorder</p>

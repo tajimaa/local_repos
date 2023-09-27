@@ -20,12 +20,17 @@ public class RegisterCommand extends AbstractCommand {
 		
 		SensiDao dao = new SensiDao();
 		
-		dao.executeUpdate(sql);
+		if(dao.executeUpdate(sql) == -1) {
+			resc.setResult("miss");
+			resc.setTarget("/registpage");
+		} else {
+			String sql2 = "insert into devicetable(uname) values ('" + name + "')";
+			dao.executeUpdate(sql2);
+			
+			resc.setTarget("/sensi/isloginCommand");
+		}
 		
-		String sql2 = "insert into devicetable(uname) values ('" + name + "')";
-		dao.executeUpdate(sql2);
 		
-		resc.setTarget("/sensi/isloginCommand");
 		return resc;
 	}
 }
