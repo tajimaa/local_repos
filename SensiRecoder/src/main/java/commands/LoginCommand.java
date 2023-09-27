@@ -22,10 +22,10 @@ public class LoginCommand extends AbstractCommand {
 			((WebRequestContext) reqc).setUserBeanInSession(bean);;
 			resc.setTarget("/homepage");
 		} else {
+			resc.setResult("miss");
 			resc.setTarget("/loginpage");
 		}
 		
 		return resc;
 	}
-	
 }

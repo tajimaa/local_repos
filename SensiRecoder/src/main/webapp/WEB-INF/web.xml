@@ -68,6 +68,15 @@
 		<url-pattern>/userspage</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>chat</servlet-name>
+		<jsp-file>/WEB-INF/jsp/c/chat.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>chat</servlet-name>
+		<url-pattern>/chat</url-pattern>
+	</servlet-mapping>
+	
 	
 <!-- error_page -->	
 
