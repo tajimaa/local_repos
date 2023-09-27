@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import db.OracleManager;
 
 public class SensiDao extends Dao {
-	String dbUser = "sensi";
+	String dbUser = "sensirecorder";
 	String dbPass = "sensi";
 	Statement st = null;
 	ResultSet rs = null;

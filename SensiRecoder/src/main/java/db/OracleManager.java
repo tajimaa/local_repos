@@ -11,7 +11,7 @@ public class OracleManager {
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "sensi", "sensi");
+            cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "sensirecorder", "sensi");
 
         } catch(ClassNotFoundException e) {
             e.printStackTrace();
