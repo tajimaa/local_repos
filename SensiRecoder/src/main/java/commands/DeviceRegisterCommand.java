@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import beans.DeviceBean;
+import beans.UserBean;
 import context.RequestContext;
 import context.ResponseContext;
+import context.WebRequestContext;
 import context.WebResponseContext;
 import dao.SensiDao;		
 
@@ -24,7 +26,10 @@ public class DeviceRegisterCommand extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 		ResponseContext resc = new WebResponseContext();
 		
-		String name = reqc.getParameter("userName")[0];
+		UserBean userBean = ((WebRequestContext)reqc).getUserBeanInSession();
+		
+		String uName = userBean.getUserName();
+		System.out.println(uName);
 		
 		ArrayList<String> deviceResult = null;
 		
@@ -50,10 +55,10 @@ public class DeviceRegisterCommand extends AbstractCommand {
 
 		        st = cn.prepareStatement(sql);
 		        st.setString(1, parameter);
-		        st.setString(2, name);
+		        st.setString(2, uName);
 		        st.executeUpdate(); 
 			}
-			deviceResult = sd.select("select * from devicetable where uname = '" + name + "'");
+			deviceResult = sd.select("select * from devicetable where uname = '" + uName + "'");
 			
 			bean.setUserName((String) deviceResult.get(0));
 			bean.setMouse((String) deviceResult.get(1));
