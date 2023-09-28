@@ -30,8 +30,4 @@
 	</div>
 </form>
 
-${data.cm180}
-${data.cm360}
-${data.game}
-
 <%@include file="/assets/template/fotter.jsp"%>
