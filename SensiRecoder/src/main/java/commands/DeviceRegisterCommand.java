@@ -3,12 +3,13 @@ package commands;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import beans.DeviceBean;
 import context.RequestContext;
 import context.ResponseContext;
 import context.WebResponseContext;
-import dao.SensiDao;
-		
+import dao.SensiDao;		
 
 public class DeviceRegisterCommand extends AbstractCommand {
 	
@@ -23,39 +24,48 @@ public class DeviceRegisterCommand extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 		ResponseContext resc = new WebResponseContext();
 		
-		String[] devices = {"uName", "mouse", "mousepad", "mousesole", "monitor"};
+		String name = reqc.getParameter("userName")[0];
+		
+		ArrayList<String> deviceResult = null;
+		
+		DeviceBean bean = new DeviceBean();
+		System.out.println(bean.getUserName());
+		
+		String[] devices = {"mouse", "mousePad", "mouseSole", "monitor"};
 		
 		try {
 			
 			Connection cn = sd.getConnection();
 		
-			for (int i = 1; i < 4; i++) {
-		
-				String sql = "update devicetable set" + devices[i] + " = ? where uname = ?";
-				
-				String device = devices[i];
-				
-				System.out.println(device);
-				
-				String parameter = reqc.getParameter(device)[0];
-				
-				System.out.println(parameter);
+			for (int i = 0; i < 4; i++) {
+			    String sql = "UPDATE devicetable SET " + devices[i] + " = ? WHERE uname = ?";
+			    String device = devices[i];
+			    String parameter = reqc.getParameter(device)[0];
+			    
+			    if (parameter == null) {
+			        // ここで何らかのデフォルト値を設定するか、処理をスキップするかを検討
+			        continue;
+			    }
+			    
+
+		        st = cn.prepareStatement(sql);
+		        st.setString(1, parameter);
+		        st.setString(2, name);
+		        st.executeUpdate(); 
+			}
+			deviceResult = sd.select("select * from devicetable where uname = '" + name + "'");
 			
-				PreparedStatement ps = cn.prepareStatement(sql);
-				ps.setString(1, parameter);
-				ps.setString(2, reqc.getParameter("uName")[0]);
-				
-				if (parameter == null) {
-					continue;
-				}
-				
-				sd.executeUpdate(sql);
-				
-			}	
+			bean.setUserName((String) deviceResult.get(0));
+			bean.setMouse((String) deviceResult.get(1));
+			bean.setMousePad((String) deviceResult.get(2));
+			bean.setMouseSole((String) deviceResult.get(3));
+			bean.setMonitor((String) deviceResult.get(4));
+			
+			resc.setResult(bean);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-			
 		resc.setTarget("/sensi/myInfoCommand");
 		
 		return resc;

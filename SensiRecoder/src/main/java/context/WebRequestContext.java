@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import beans.DeviceBean;
 import beans.UserBean;
 
 public class WebRequestContext implements RequestContext {
@@ -54,5 +55,15 @@ public class WebRequestContext implements RequestContext {
 	public UserBean getUserBeanInSession() {
 		session = request.getSession();
 		return (UserBean)session.getAttribute("bean");
+	}
+	
+	public void setDeviceBeanInSession(DeviceBean bean) {
+		session = request.getSession();
+		session.setAttribute("bean", bean);
+	}
+	
+	public DeviceBean getDeviceBeanInSession() {
+		session = request.getSession();
+		return (DeviceBean)session.getAttribute("bean");
 	}
 }
