@@ -2,26 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="/assets/template/header_navbar.jsp"%>
 <!-- ここか下にコンテンツを書く -->
-
-<<<<<<< Updated upstream
-<div class="shadow card ml-5 mt-5" style="width: 20rem";>
-	<div class="card">
-		<ul class="list-group list-group-flush">
-=======
-<div class="container bg-secondary" style="width: 40rem;">
-  <div class="row">
-    <div class="col">
-      <img src="<%=request.getContextPath() %>/default_user.png" class="rounded-circle" width="120" height="120">
-    </div>
-    <div class="col-9">
-      <h1>${bean.userName }</h1>
-    </div>
-  </div>
-</div>
-
-
->>>>>>> Stashed changes
-			
+		
 <form action="sensi/deviceRegisterCommand" method="get">
 	<div class="col-md-4">
 		<div class="card my-2 mb-2">
@@ -53,5 +34,4 @@ ${data.cm180}
 ${data.cm360}
 ${data.game}
 
-<!-- ************************************************* -->
 <%@include file="/assets/template/fotter.jsp"%>
