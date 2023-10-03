@@ -14,13 +14,13 @@
 							<input type="text" class="form-control-plaintext" name="mouse" value="${data.mouse}">
 						</li>
 						<li class="list-group-item" style="display: inline-block;">マウスパッド:
-							<input type="text" class="form-control-plaintext" name="mouse" value="${data.mousePad}">
+							<input type="text" class="form-control-plaintext" name="mousePad" value="${data.mousePad}">
 						</li>
 						<li class="list-group-item">マウスソール:
-							<input type="text" class="form-control-plaintext" name="mouse" value="${data.mouseSole}">
+							<input type="text" class="form-control-plaintext" name="mouseSole" value="${data.mouseSole}">
 						</li>
 						<li class="list-group-item">モニター:
-							<input type="text" class="form-control-plaintext" name="mouse" value="${data.monitor}">
+							<input type="text" class="form-control-plaintext" name="monitor" value="${data.monitor}">
 						</li>
 					</ul>
 				</div>
