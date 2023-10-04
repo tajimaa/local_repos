@@ -132,7 +132,6 @@
 </style>
 <!-- ここか下にコンテンツを書く -->
 
-
 <div class="mt-5 p-5 width-10 m-a">
 	<div class="container">
 		<div class="row">
