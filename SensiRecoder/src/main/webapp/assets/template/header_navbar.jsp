@@ -5,8 +5,7 @@
 <meta charset="utf-8">
 
 <!-- icon -->
-<script src="https://kit.fontawesome.com/c82cac4dcf.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/c82cac4dcf.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -43,29 +42,35 @@
     bottom: -6px;
     width: 100%;
     height: 3px;
-    background: rgb(213, 128 , 255);
+    background: #f582ae;
     border-radius: 5px;
     transform-origin: right;
     transform: scale(0);
     transition: transform .5s;
 }
 
+.navigation a:hover {
+	color: #f582ae;
+}
+
 .navigation a:hover::after {
     transform-origin: left;
     transform:scale(1);
 }
-
+.tcolor{
+	color: #001858
+}
 </style>
 	
 <title>振り向き計算</title>
 </head>
-<body style="font-family: 'Noto Sans JP', sans-serif">
+<body style="font-family: 'Noto Sans JP', sans-serif ; color: #001858;">
 	<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ヘッダーナビゲーション↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
-	<nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-light p-2 px-5">
+	<nav class="shadow-sm navbar navbar-expand-lg p-2 px-5" style="background-color:transparent;">
 		<nav class="navbar navbar-light">
-			<a class="navbar-brand text-dark font-weight-bold ml-lg-4" href="#" >
-    			<i class="fa-solid fa-crosshairs fa-xl"></i> 
-    			<a style="color: rgb(213, 128 , 255); font-size: 24px; font-weight: 700;">Sensi</a><a style="font-size: 24px; font-weight: 700;">Recorder</a>
+			<a class="navbar-brand text-dark font-weight-bold mr-1" href="#" >
+    			<i class="fa-solid fa-crosshairs fa-xl mr-0" style="color:#001858;"></i> 
+    			<a style="color: #f582ae; font-size: 24px; font-weight: 700;">Sensi</a><a style="font-size: 24px; font-weight: 700;">Recorder</a>
 			</a>
 
 		</nav>
@@ -73,31 +78,31 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse text-dark" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse " id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto navigation">
 				<li class="nav-item ml-lg-1 active ">
-					<a class="nav-link text-dark ml-lg-1" href="<%=request.getContextPath() %>/homepage">振り向き計算 
+					<a class="nav-link ml-lg-1 tcolor" href="<%=request.getContextPath() %>/homepage">振り向き計算 
 						<span class="sr-only">(current)</span>
 					</a>
 				</li>
 				<li class="nav-item ml-lg-1">
-					<a class="nav-link text-dark ml-lg-1" href="<%=request.getContextPath() %>/sensi/userListCommand">他ユーザーのデバイス</a>
+					<a class="nav-link ml-lg-1 tcolor" href="<%=request.getContextPath() %>/sensi/userListCommand">他ユーザーのデバイス</a>
 				</li>
 				<li class="nav-item ml-lg-1">
-					<a class="nav-link text-dark ml-lg-1" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a>
+					<a class="nav-link ml-lg-1 tcolor" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a>
 				</li>
 			</ul>
 			<c:if test="${!empty bean}">
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-							<i class="fa-solid fa-circle-user fa-lg"></i> ${bean.userName }
+						<a class="nav-link dropdown-toggle tcolor" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+							<i class="fa-solid fa-circle-user fa-lg tcolor"></i> ${bean.userName }
 						</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<div class="dropdown-menu dropdown-menu-right tcolor" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a> 
 							<a class="dropdown-item" href="<%=request.getContextPath() %>/loginpage">ログアウト</a>
 							<c:if test="${bean.userName eq 'jibiki'}">
-								<a class="dropdown-item" href="<%=request.getContextPath() %>/chat">ログアウト</a>
+								<a class="dropdown-item" href="<%=request.getContextPath() %>/chat">チャット</a>
 							</c:if>
 							<c:if test="${bean.userName eq 'tajima'}">
 								<a class="dropdown-item" href="<%=request.getContextPath() %>/chat">チャット</a>
