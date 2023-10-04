@@ -18,7 +18,7 @@
     <div class="col-md-6">
       <div class="card-body">
         <h5 class="card-title text-center mb-3">振り向き計算</h5>
-		<form class="row g-3 mb-0" action="calcCommand" method="get">
+		<form class="row g-3 mb-0" action="<%=request.getContextPath() %>/sensi/sensitivityRegisterCommand" method="get">
 			<div class="col-12 form-group">
 				<label for="exampleFormControlSelect1">ゲームタイトル</label> <select
 					class="form-control" id="mySelect" name="game">
