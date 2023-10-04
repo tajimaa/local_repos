@@ -188,7 +188,7 @@
 			<div class="col-6">
 				<div class="card p-4 card_border bg-blue">
 					<h4 class="card-title text-center mb-4 font-weight-bold">振り向き計算</h4>
-					<form class="row g-3 mb-0" action="calcCommand" method="get">
+					<form class="row g-3 mb-0" action="<%=request.getContextPath() %>/sensi/senRegisterCommand" method="get">
 						<div class="col-12 form-group font-weight-bold">
 							<label for="exampleFormControlSelect1 font-weight-bold">ゲームタイトル</label>
 							<select class="form-control main_bg" id="mySelect" name="game">
