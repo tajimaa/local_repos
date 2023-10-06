@@ -10,7 +10,6 @@ public class SensiBean implements Serializable {
 	String cm180;
 	String cm360;
 	String registerd;
-	
 	public String getuName() {
 		return uName;
 	}
@@ -53,4 +52,6 @@ public class SensiBean implements Serializable {
 	public void setRegisterd(String registerd) {
 		this.registerd = registerd;
 	}
+	
+
 }

@@ -1,8 +1,11 @@
 package commands;
 
+import beans.UserBean;
 import context.RequestContext;
 import context.ResponseContext;
+import context.WebRequestContext;
 import context.WebResponseContext;
+import dao.SensiDao;
 
 public class SensitivityRegisterCommand extends AbstractCommand {
 
@@ -13,16 +16,31 @@ public class SensitivityRegisterCommand extends AbstractCommand {
 		
 		System.out.println("せんしれじすたーきてるよ");
 		
-//		String game = reqc.getParameter("game")[0];
-//		double sensi = Double.parseDouble(reqc.getParameter("sensi")[0]);
-//		int dpi = Integer.parseInt(reqc.getParameter("dpi")[0]);
-//		
-//		
-//		
-//		ResultBean bean = new ResultBean();
-//		bean.setCm180(calc.GameSensitivity.cm180(dpi, game, sensi));
-//		bean.setCm360(calc.GameSensitivity.cm360(dpi, game, sensi));
-//		resc.setResult(bean);
+		UserBean uBean = ((WebRequestContext)reqc).getUserBeanInSession();
+		
+		
+		String uName = uBean.getUserName();
+		String game = reqc.getParameter("game")[0];
+		double sensi = Double.parseDouble(reqc.getParameter("sensi")[0]);
+		int dpi = Integer.parseInt(reqc.getParameter("dpi")[0]);
+		double cm180 = calc.GameSensitivity.cm180(dpi, game, sensi);
+		double cm360 = calc.GameSensitivity.cm360(dpi, game, sensi);
+		
+		System.out.println(uName);
+		System.out.println(game);
+		System.out.println(sensi);
+		System.out.println(dpi);
+		System.out.println(cm180);
+		System.out.println(cm360);
+		
+		
+		
+		String sql = "insert into sensitable values('" + uName + "', sysdate, '" + game + "', " + sensi + ", " + dpi + ", " + cm180 + ", " + cm360 + ")";
+		
+		SensiDao sDao = new SensiDao();
+		
+		sDao.executeUpdate(sql);
+		
 		resc.setTarget("/homepage");
 		return resc;
 	}
