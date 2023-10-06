@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import beans.AllBean;
 import db.OracleManager;
 
 public class SensiDao extends Dao {
@@ -35,6 +36,45 @@ public class SensiDao extends Dao {
 	                result.add(rs.getString(i));
 	                System.out.println("column: " + rs.getString(i));
 	            }
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public ArrayList<AllBean> selectAll(String sql) {
+		ArrayList<AllBean> result = new ArrayList<>();
+
+		try {
+			st = om.getStatement(dbUser, dbPass);
+			ResultSet rs = st.executeQuery(sql);
+			ResultSetMetaData rsMeta = rs.getMetaData();
+			int columnCount = rsMeta.getColumnCount();
+			System.out.println("columnCount: "+ columnCount);
+			System.out.println("SQL: "+ sql);
+			
+			while (rs.next()) {
+				AllBean bean = new AllBean();
+            	bean.setUserName(rs.getString("UNAME"));
+                bean.setGame(rs.getString("GAME"));
+                bean.setSensitivity(rs.getString("SENSITIVITY"));
+                bean.setDpi(rs.getString("DPI"));
+                bean.setCm180(rs.getString("CM180"));
+                bean.setCm360(rs.getString("CM360"));
+                bean.setMouse(rs.getString("MOUSE"));
+                bean.setMousePad(rs.getString("MOUSEPAD"));
+                bean.setMouseSole(rs.getString("MOUSESOLE"));
+                bean.setMonitor(rs.getString("MONITOR"));
+	            result.add(bean);
 	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
