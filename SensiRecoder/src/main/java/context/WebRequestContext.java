@@ -47,6 +47,11 @@ public class WebRequestContext implements RequestContext {
 		this.request = (HttpServletRequest) request;
 	}
 	
+	public void InvalidateSession() {
+		session = request.getSession();
+		session.invalidate();
+	}
+	
 	public void setUserBeanInSession(UserBean bean) {
 		session = request.getSession();
 		session.setAttribute("bean", bean);

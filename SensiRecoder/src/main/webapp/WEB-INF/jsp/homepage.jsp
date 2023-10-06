@@ -5,6 +5,7 @@
 	body {
 		background-color: #fef6e4;
 		color: #001858;
+		font-family: 'Noto Sans JP', sans-serif;
 	}
 	.in {
 		background-color: #fef6e4;

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="ja">
 
 <head>
@@ -32,7 +33,6 @@
             <c:if test="${data eq 'miss'}">
             	<p class="text-danger">このユーザー名は既に使われています。</p>
     		</c:if>
-    		
             <label for="inputEmail" class="sr-only">ユーザー名</label>
             <input type="text" name="id" id="inputEmail" class="form-control mb-1" placeholder="ユーザー名" required autofocus>
             <label for="inputPassword"  class="sr-only">パスワード</label>

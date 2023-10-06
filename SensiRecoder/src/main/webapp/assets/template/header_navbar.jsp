@@ -29,37 +29,60 @@
 	crossorigin="anonymous"></script>
 
 <style>
-.navigation a{
-    position: relative;
-    text-decoration: none;
-    margin-left: 40px;
-}
+	.navigation a{
+	    position: relative;
+	    text-decoration: none;
+	    margin-left: 40px;
+	}
+	
+	.navigation a::after {
+	    content: '';
+	    position: absolute;
+	    left: 0;
+	    bottom: -6px;
+	    width: 100%;
+	    height: 3px;
+	    background: #f582ae;
+	    border-radius: 5px;
+	    transform-origin: right;
+	    transform: scale(0);
+	    transition: transform .5s;
+	}
+	
+	.navigation a:hover {
+		color: #f582ae;
+	}
+	
+	.navigation a:hover::after {
+	    transform-origin: left;
+	    transform:scale(1);
+	}
+	.tcolor{
+		color: #001858
+	}
 
-.navigation a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    background: #f582ae;
-    border-radius: 5px;
-    transform-origin: right;
-    transform: scale(0);
-    transition: transform .5s;
-}
-
-.navigation a:hover {
-	color: #f582ae;
-}
-
-.navigation a:hover::after {
-    transform-origin: left;
-    transform:scale(1);
-}
-.tcolor{
-	color: #001858
-}
+    .btn-pink {
+    	width: 100px;
+    	background: #f582ae;
+    	border-color: #f582ae;
+    	color: #001858;
+    	
+    }
+    .btn-pink:hover{
+    	box-shadow: 0px 10px 10px -1px rgba(0,0,0,0.1);
+    	background: #f582ae;
+    	border-color: #f582ae;
+    	color: #001858;
+    	
+    }
+    
+    .f-w-4 {
+		font-weight: 400;
+	}
+	
+	.user {
+		
+	}
 </style>
 	
 <title>振り向き計算</title>
@@ -88,19 +111,22 @@
 				<li class="nav-item ml-lg-1">
 					<a class="nav-link ml-lg-1 tcolor" href="<%=request.getContextPath() %>/sensi/userListCommand">他ユーザーのデバイス</a>
 				</li>
-				<li class="nav-item ml-lg-1">
-					<a class="nav-link ml-lg-1 tcolor" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a>
-				</li>
+				<c:if test="${!empty bean}">
+					<li class="nav-item ml-lg-1">
+						<a class="nav-link ml-lg-1 tcolor" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a>
+					</li>
+				</c:if>
+
 			</ul>
 			<c:if test="${!empty bean}">
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle tcolor" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+						<a class="nav-link dropdown-toggle tcolor font-weight-bold user h5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
 							<i class="fa-solid fa-circle-user fa-lg tcolor"></i> ${bean.userName }
 						</a>
 						<div class="dropdown-menu dropdown-menu-right tcolor" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="<%=request.getContextPath() %>/sensi/myInfoCommand">マイページ</a> 
-							<a class="dropdown-item" href="<%=request.getContextPath() %>/loginpage">ログアウト</a>
+							<a class="dropdown-item" href="<%=request.getContextPath() %>/sensi/logoutCommand">ログアウト</a>
 							<c:if test="${bean.userName eq 'jibiki'}">
 								<a class="dropdown-item" href="<%=request.getContextPath() %>/chat">チャット</a>
 							</c:if>
@@ -117,9 +143,9 @@
 			<c:if test="${empty bean}">
 				<div class="navbar-nav mr-5">
 					<span>
-						<a href="loginpage" class="mr-2 nav-item nav-link text-dark">ログイン</a>
+						<a href="<%=request.getContextPath() %>/loginpage" class="mr-2 nav-item nav-link text-dark font-weight-bold">ログイン</a>
 					</span>
-					<button href="registpage" type="button" class="btn btn-dark">新規登録</button>
+					<a href="<%=request.getContextPath() %>/registpage"><button type="button" class="btn btn-pink font-weight-bold">登録</button></a>
 				</div>
 			</c:if>
 		</div>
