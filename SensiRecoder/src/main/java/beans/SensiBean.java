@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class SensiBean implements Serializable {
 	String uName;
 	String game;
-	double sensitivity;
-	int dpi;
-	double cm180;
-	double cm360;
+	String sensitivity;
+	String dpi;
+	String cm180;
+	String cm360;
 	String registerd;
 	public String getuName() {
 		return uName;
@@ -22,28 +22,28 @@ public class SensiBean implements Serializable {
 	public void setGame(String game) {
 		this.game = game;
 	}
-	public double getSensitivity() {
+	public String getSensitivity() {
 		return sensitivity;
 	}
-	public void setSensitivity(double sensitivity) {
+	public void setSensitivity(String sensitivity) {
 		this.sensitivity = sensitivity;
 	}
-	public int getDpi() {
+	public String getDpi() {
 		return dpi;
 	}
-	public void setDpi(int dpi) {
+	public void setDpi(String dpi) {
 		this.dpi = dpi;
 	}
-	public double getCm180() {
+	public String getCm180() {
 		return cm180;
 	}
-	public void setCm180(double cm180) {
+	public void setCm180(String cm180) {
 		this.cm180 = cm180;
 	}
-	public double getCm360() {
+	public String getCm360() {
 		return cm360;
 	}
-	public void setCm360(double cm360) {
+	public void setCm360(String cm360) {
 		this.cm360 = cm360;
 	}
 	public String getRegisterd() {
@@ -52,5 +52,6 @@ public class SensiBean implements Serializable {
 	public void setRegisterd(String registerd) {
 		this.registerd = registerd;
 	}
+	
 
 }
