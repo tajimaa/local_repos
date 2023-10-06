@@ -8,4 +8,5 @@ public interface RequestContext {
 	public void setParameterMap(Map<String, String[]> map);
 	public Object getRequest();
 	public void setRequest(Object request);
+	public void InvalidateSession();
 }
