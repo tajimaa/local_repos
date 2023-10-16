@@ -70,6 +70,7 @@ public class SensiDao extends Dao {
                 bean.setDpi(rs.getString("DPI"));
                 bean.setCm180(rs.getString("CM180"));
                 bean.setCm360(rs.getString("CM360"));
+                bean.setRegistered(rs.getString("REGISTERED"));
                 bean.setMouse(rs.getString("MOUSE"));
                 bean.setMousePad(rs.getString("MOUSEPAD"));
                 bean.setMouseSole(rs.getString("MOUSESOLE"));

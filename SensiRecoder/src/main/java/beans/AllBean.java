@@ -13,7 +13,7 @@ public class AllBean implements Serializable {
 	private String dpi;
 	private String cm180;
 	private String cm360;
-	private String registerd;
+	private String registered;
 	public String getUserName() {
 		return userName;
 	}
@@ -74,10 +74,10 @@ public class AllBean implements Serializable {
 	public void setCm360(String cm360) {
 		this.cm360 = cm360;
 	}
-	public String getRegisterd() {
-		return registerd;
+	public String getRegistered() {
+		return registered;
 	}
-	public void setRegisterd(String registerd) {
-		this.registerd = registerd;
+	public void setRegistered(String registerd) {
+		this.registered = registerd;
 	}
 }
