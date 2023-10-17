@@ -18,8 +18,14 @@ public class SensitivityRegisterCommand extends AbstractCommand {
 		
 		UserBean uBean = ((WebRequestContext)reqc).getUserBeanInSession();
 		
+		String uName;
 		
-		String uName = uBean.getUserName();
+		try {
+			uName = uBean.getUserName();
+		} catch (NullPointerException e) {
+			resc.setTarget("/loginpage");
+			return resc;
+		}
 		String game = reqc.getParameter("game")[0];
 		double sensi = Double.parseDouble(reqc.getParameter("sensi")[0]);
 		int dpi = Integer.parseInt(reqc.getParameter("dpi")[0]);
