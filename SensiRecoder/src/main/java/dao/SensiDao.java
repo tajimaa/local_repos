@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import beans.AllBean;
+import beans.SensiBean;
 import db.OracleManager;
 
 public class SensiDao extends Dao {
@@ -88,6 +89,44 @@ public class SensiDao extends Dao {
 				e.printStackTrace();
 			}
 		}
+		return result;
+	}
+	
+	public ArrayList<SensiBean> selectUser(String sumone) {
+		ArrayList<SensiBean> result = new ArrayList<>();
+		String sql = "select UNAME from sensitable where GAME = ?";
+		Connection cn = null;
+		PreparedStatement ps = null;
+        
+		try {
+			cn = getConnection();
+			ps = cn.prepareStatement(sql);
+			ps.setString(1, sumone);
+			rs = ps.executeQuery();
+			
+			if(rs != null) {
+				while(rs.next()) {
+					SensiBean bean = new SensiBean();
+	                bean.setuName(rs.getString("UNAME"));
+					result.add(bean);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+		
 		return result;
 	}
 

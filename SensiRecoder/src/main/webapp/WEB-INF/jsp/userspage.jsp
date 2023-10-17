@@ -112,9 +112,9 @@
 <div class="bg_m p-7 pt-3">
 	<div class="float-right mr- mt-4 " style="width: 500px;">
     <div class="container mt-3">
-        <form class="form-inline " action="sensi/searchCommand" method="get">
+        <form class="form-inline " action="<%=request.getContextPath() %>/sensi/searchCommand" method="get">
             <div class="form-group mr-3">
-                <input type="email" class="form-control input-group-prepend card-border-none bg_body in b-l" id="InputName" placeholder="キーワードを入力">
+                <input type="text" class="form-control input-group-prepend card-border-none bg_body in b-l" id="InputName" name="game" placeholder="キーワードを入力">
             	<button type="submit" class="btn btn-primary b-r bg_bu form-control">送信</button>
             </div>
         </form>
@@ -168,12 +168,6 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
 
 
 <%@include file="/assets/template/fotter.jsp"%>
