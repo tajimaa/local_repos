@@ -83,6 +83,7 @@
 	.user {
 		
 	}
+
 </style>
 	
 <title>振り向き計算</title>
@@ -91,9 +92,9 @@
 	<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ヘッダーナビゲーション↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
 	<nav class="shadow-sm navbar navbar-expand-lg p-2 px-5" style="background-color:transparent;">
 		<nav class="navbar navbar-light">
-			<a class="navbar-brand text-dark font-weight-bold mr-1" href="#" >
+			<a class="navbar-brand text-dark font-weight-bold mr-1" href="<%=request.getContextPath() %>/homepage" >
     			<i class="fa-solid fa-crosshairs fa-xl mr-0" style="color:#001858;"></i> 
-    			<a style="color: #f582ae; font-size: 24px; font-weight: 700;">Sensi</a><a style="font-size: 24px; font-weight: 700;">Recorder</a>
+    			<a href="<%=request.getContextPath() %>/homepage" style="color: #f582ae; font-size: 24px; font-weight: 700; text-decoration: none;" >Sensi</a><a href="<%=request.getContextPath() %>/homepage" style="font-size: 24px; font-weight: 700; text-decoration: none;">Recorder</a>
 			</a>
 
 		</nav>

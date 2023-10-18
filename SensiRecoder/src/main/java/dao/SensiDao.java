@@ -13,19 +13,44 @@ import beans.SensiBean;
 import db.OracleManager;
 
 public class SensiDao extends Dao {
-	String dbUser = "sensirecorder";
-	String dbPass = "sensi";
+	String SELECT_ALL = "select * from sensitable s left join devicetable d on s.uName = d.uName";
+	private static final String SELECT_BY_USERNAME = "select * from sensitable s left join devicetable d on s.uName = d.uName where d.uName = ?";
+	String DB_USER = "sensirecorder";
+	String DB_PASS = "sensi";
 	Statement st = null;
 	ResultSet rs = null;
 	Connection cn = null;
 	PreparedStatement ps = null;
 	OracleManager om = new OracleManager();
 	
+    public AllBean selectByUsername(String name) {
+    	AllBean bean = new AllBean();
+    	try {
+    		cn = om.getConnection(DB_USER, DB_PASS);
+    		ps = cn.prepareStatement(SELECT_BY_USERNAME);
+    		ps.setString(1, name);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+                bean.setUserName(rs.getString("UNAME"));
+                bean.setMonitor(rs.getString("MONITOR"));
+                bean.setMouse(rs.getString("MOUSE"));
+                bean.setMousePad(rs.getString("MOUSEPAD"));
+                bean.setMouseSole(rs.getString("MOUSESOLE"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return bean;
+    }
+	
 	public ArrayList<String> select(String sql) {
 		ArrayList<String> result = new ArrayList<>();
 
 		try {
-			st = om.getStatement(dbUser, dbPass);
+			st = om.getStatement(DB_USER, DB_PASS);
 			ResultSet rs = st.executeQuery(sql);
 			ResultSetMetaData rsMeta = rs.getMetaData();
 			int columnCount = rsMeta.getColumnCount();
@@ -56,12 +81,52 @@ public class SensiDao extends Dao {
 		ArrayList<AllBean> result = new ArrayList<>();
 
 		try {
-			st = om.getStatement(dbUser, dbPass);
+			st = om.getStatement(DB_USER, DB_PASS);
 			ResultSet rs = st.executeQuery(sql);
 			ResultSetMetaData rsMeta = rs.getMetaData();
 			int columnCount = rsMeta.getColumnCount();
 			System.out.println("columnCount: "+ columnCount);
 			System.out.println("SQL: "+ sql);
+			
+			while (rs.next()) {
+				AllBean bean = new AllBean();
+            	bean.setUserName(rs.getString("UNAME"));
+                bean.setGame(rs.getString("GAME"));
+                bean.setSensitivity(rs.getString("SENSITIVITY"));
+                bean.setDpi(rs.getString("DPI"));
+                bean.setCm180(rs.getString("CM180"));
+                bean.setCm360(rs.getString("CM360"));
+                bean.setRegistered(rs.getString("REGISTERED"));
+                bean.setMouse(rs.getString("MOUSE"));
+                bean.setMousePad(rs.getString("MOUSEPAD"));
+                bean.setMouseSole(rs.getString("MOUSESOLE"));
+                bean.setMonitor(rs.getString("MONITOR"));
+	            result.add(bean);
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	public ArrayList<AllBean> selectAll() {
+		ArrayList<AllBean> result = new ArrayList<>();
+
+		try {
+			st = om.getStatement(DB_USER, DB_PASS);
+			ResultSet rs = st.executeQuery(SELECT_ALL);
+			ResultSetMetaData rsMeta = rs.getMetaData();
+			int columnCount = rsMeta.getColumnCount();
+			System.out.println("columnCount: "+ columnCount);
+			System.out.println("SQL: "+ SELECT_ALL);
 			
 			while (rs.next()) {
 				AllBean bean = new AllBean();
@@ -134,7 +199,7 @@ public class SensiDao extends Dao {
 		int flag = -1;
 
 		try {
-			st = om.getStatement(dbUser, dbPass);
+			st = om.getStatement(DB_USER, DB_PASS);
 			flag = st.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -145,7 +210,7 @@ public class SensiDao extends Dao {
 	
 	public Connection getConnection() {
 		try {
-			cn = om.getConnection(dbUser, dbPass);
+			cn = om.getConnection(DB_USER, DB_PASS);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
