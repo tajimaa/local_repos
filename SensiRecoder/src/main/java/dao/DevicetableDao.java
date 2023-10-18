@@ -8,12 +8,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import beans.AllBean;
 import beans.DeviceBean;
 import db.OracleManager;
 
 public class DevicetableDao {
 	private static final String SELECT_ALL = "select * from devicetable";
-	private static final String SELECT_BY_USERNAME = "select * from devicetable where uname = ?";
+	private static final String SELECT_BY_USERNAME = "select * from sensitable s left join devicetable d on s.uName = d.uName where game = ?";
 	private static final String DB_USER = "sensirecoder";
 	private static final String DB_PASS = "sensi";
 	
@@ -24,20 +25,29 @@ public class DevicetableDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     
-    public DeviceBean selectByUsername(String name) {
-    	DeviceBean bean = new DeviceBean();
+    public AllBean selectByUsername(String name) {
+    	AllBean bean = null;
     	try {
+    		System.out.println("sbu: "+name);
     		cn = om.getConnection(DB_USER, DB_PASS);
     		ps = cn.prepareStatement(SELECT_BY_USERNAME);
     		ps.setString(1, name);
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
-                bean.setUserName(rs.getString("UNAME"));
-                bean.setMonitor(rs.getString("MONITOR"));
+				bean = new AllBean();
+            	bean.setUserName(rs.getString("UNAME"));
+            	System.out.println(rs.getString("UNAME"));
+                bean.setGame(rs.getString("GAME"));
+                bean.setSensitivity(rs.getString("SENSITIVITY"));
+                bean.setDpi(rs.getString("DPI"));
+                bean.setCm180(rs.getString("CM180"));
+                bean.setCm360(rs.getString("CM360"));
+                bean.setRegistered(rs.getString("REGISTERED"));
                 bean.setMouse(rs.getString("MOUSE"));
                 bean.setMousePad(rs.getString("MOUSEPAD"));
                 bean.setMouseSole(rs.getString("MOUSESOLE"));
+                bean.setMonitor(rs.getString("MONITOR"));
 			}
 			
 		} catch (SQLException e) {

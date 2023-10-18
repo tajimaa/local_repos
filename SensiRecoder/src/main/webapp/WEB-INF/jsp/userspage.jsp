@@ -77,6 +77,9 @@
 	.minw {
 		min-width: 450px;
 	}
+	.minh {
+		min-height: 600px;
+	}
 	
 	.in:focus{
 		background-color: #fef6e4;
@@ -100,27 +103,88 @@
 		display: inline-block; 
 		_display: inline;
 	}
-
+	
+	.bar{
+    	position: relative;
+    	
+    }
+    .bar::before {
+    	content: "";  
+    	position: absolute;
+    	border-bottom: solid;
+    	border-color: #;
+    	width: 80%;
+    	top:10;
+	  	left: 0;
+	  	z-index: -2;
+    }
+    .mt-15 {
+    	margin-top: 150px;
+    }
 	
 </style>
 
 
-<div class="container text-center ti">
+<div class="container text-center ti miny">
 	<h1 class="font-weight-bold">Aim Ddevice</h1>
 	<p>他ユーザーが実際に使っているAim関連のデバイスを見ることができます。</p>
 </div>	
-<div class="bg_m p-7 pt-3">
+<div class="bg_m p-7 pt-3 minh">
 	<div class="float-right mr- mt-4 " style="width: 500px;">
-    <div class="container mt-3">
-        <form class="form-inline " action="<%=request.getContextPath() %>/sensi/searchCommand" method="get">
-            <div class="form-group mr-3">
-                <input type="text" class="form-control input-group-prepend card-border-none bg_body in b-l" id="InputName" name="game" placeholder="キーワードを入力">
-            	<button type="submit" class="btn btn-primary b-r bg_bu form-control">送信</button>
-            </div>
-        </form>
-    </div>
-
+	    <div class="container mt-3">
+	        <form class="form-inline " action="<%=request.getContextPath() %>/sensi/searchCommand" method="get">
+	            <div class="form-group mr-3">
+	            	<select class="form-control card-border-none bg_body in b-l" id="mySelect" name="game">
+						<option value="default">デフォルト</option>
+						<option value="1v1.LOL">1v1.LOL</option>
+						<option value="7_Days_to_Die">7_Days_to_Die</option>
+						<option value="Alliance_of_Valiant_Arms_(AVA)">Alliance_of_Valiant_Arms_(AVA)</option>
+						<option value="Apex_Aim_Trainer">Apex_Aim_Trainer</option>
+						<option value="Apex_Legends">Apex_Legends</option>
+						<option value="ARK_Survival_Evolved">ARK_Survival_Evolved</option>
+						<option value="Arma_3">Arma_3</option>
+						<option value="Back_4_Blood">Back_4_Blood</option>
+						<option value="Banana_Shooter">Banana_Shooter</option>
+						<option value="Battalion_1944">Battalion_1944</option>
+						<option value="BattleBit_Remastered">BattleBit_Remastered</option>
+						<option value="Battlefield_2042">Battlefield_2042</option>
+						<option value="Battlefield_1">Battlefield_1</option>
+						<option value="Battlefield_4">Battlefield_4</option>
+						<option value="Battlefield_V">Battlefield_V</option>
+						<option value="Black_Desert_Online_(黒い砂漠)">Black_Desert_Online_(黒い砂漠)</option>
+						<option value="Block_N_Load">Block_N_Load</option>
+						<option value="Bloodhunt_(Vampire_The_Masquerade)">Bloodhunt_(Vampire_The_Masquerade)</option>
+						<option value="Borderlands_2">Borderlands_2</option>
+						<option value="Borderlands_3">Borderlands_3</option>
+						<option value="Boundary">Boundary</option>
+						<option value="Call_of_Duty_BO4">Call_of_Duty_BO4</option>
+						<option value="Call_of_Duty_BOCW">Call_of_Duty_BOCW</option>
+						<option value="Call_of_Duty_Modern_Warfare_II">Call_of_Duty_Modern_Warfare_II</option>
+						<option value="Call_of_Duty_Vanguard">Call_of_Duty_Vanguard</option>
+						<option value="Counter-Strike_Global_Offensive_(CSGO)">Counter-Strike_Global_Offensive_(CSGO)</option>
+						<option value="Cyberpunk_2077">Cyberpunk_2077</option>
+						<option value="Dark_and_Darker">Dark_and_Darker</option>
+						<option value="Unturned">Unturned</option>
+						<option value="Valheim">Valheim</option>
+						<option value="Valorant">Valorant</option>
+						<option value="Warframe">Warframe</option>
+						<option value="Warlander">Warlander</option>
+						<option value="War_Thunder">War_Thunder</option>
+						<option value="World_War_3">World_War_3</option>
+					</select>
+	            	<button type="submit" class="btn btn-primary b-r bg_bu form-control">検索</button>
+	            </div>
+	        </form>
+	    </div>
 	</div>
+	
+	<c:if test="${empty data}">
+		<div class="card p-4 mx-auto bg_body but-r card_border mt-15 text-center">
+			<h4>このゲームをプレイしているSensirecoderユーザーは見つかりませんでした。</h4>
+		</div>
+	</c:if>
+	
+	<c:if test="${!empty data}">
 	<div class="p-5 mt-5">
 		<div class="row">
 			<c:forEach items="${data}" var="data" varStatus="status">
@@ -131,13 +195,21 @@
 							<i class="fa-solid fa-user-astronaut fa-2xl"></i>
 							<span class="h3">${data.userName}</span>
 						</h5>
-					<div class="mt-5">
-						<span class="h5"><i class="fa-solid fa-chess-rook mr-3"></i>メインゲーム</span>
+
+						<div class="mt-3">
+							<table class="h5">
+								<tr>
+									<th style="width:200px"><i class="fa-solid fa-chess-rook "></i>メインゲーム</th>
+									<td>${data.game}</td>
+								</tr>
+								<tr>
+									<th style="width:200px"><i class="fa-solid fa-computer-mouse mr-1"></i>振り向き</th>
+									<td>${data.cm180}</td>
+								</tr>
+							</table>
+						</div>
 					</div>
-					<div class="mt-3">
-						<span class="h5"><i class="fa-solid fa-computer-mouse mr-3"></i>振り向き</span>
-					</div>
-					</div>
+
 					<div class="card-body p-4">
 						<table>
 						  <tr>
@@ -167,6 +239,8 @@
 		</c:forEach>
 		</div>
 	</div>
+	</c:if>
+	
 </div>
 
 

@@ -2,11 +2,11 @@ package commands;
 
 import java.util.ArrayList;
 
-import beans.DeviceBean;
+import beans.AllBean;
 import context.RequestContext;
 import context.ResponseContext;
 import context.WebResponseContext;
-import dao.DevicetableDao;
+import dao.SensiDao;
 
 public class UserListCommand extends AbstractCommand {
 
@@ -15,10 +15,20 @@ public class UserListCommand extends AbstractCommand {
 		RequestContext reqc = getRequestContext();
 		ResponseContext resc = new WebResponseContext();
 		
-		DevicetableDao dao = new DevicetableDao();
-		ArrayList<DeviceBean> reslultList = dao.selectAll();
+		SensiDao sensidao = new SensiDao();
+
+		ArrayList<AllBean> res = sensidao.selectAll();
+		ArrayList<AllBean> result = new ArrayList<>();
 		
-		resc.setResult(reslultList);
+		String userName = null;
+		for (AllBean bean: res) {
+			if (!bean.getUserName().equals(userName)) {
+				result.add(bean);
+			}
+			userName = bean.getUserName();
+		}
+		
+		resc.setResult(result);
 		resc.setTarget("/userspage");
 		
 		return resc;
