@@ -14,6 +14,7 @@ import db.OracleManager;
 
 public class SensiDao extends Dao {
 	String SELECT_ALL = "select * from sensitable s left join devicetable d on s.uName = d.uName";
+	String SELECT_BY_GAME = "select * from sensitable s left join devicetable d on s.uName = d.uName and s.game = ?";
 	private static final String SELECT_BY_USERNAME = "select * from sensitable s left join devicetable d on s.uName = d.uName where d.uName = ?";
 	String DB_USER = "sensirecorder";
 	String DB_PASS = "sensi";
@@ -116,6 +117,40 @@ public class SensiDao extends Dao {
 		}
 		return result;
 	}
+	
+	public ArrayList<AllBean> selectByGame(String sql, String game) {
+		ArrayList<AllBean> result = new ArrayList<>();
+    	AllBean bean = null;
+    	try {
+    		cn = om.getConnection(DB_USER, DB_PASS);
+    		ps = cn.prepareStatement(sql);
+    		ps.setString(1, game);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				bean = new AllBean();
+            	bean.setUserName(rs.getString("UNAME"));
+            	System.out.println(rs.getString("UNAME"));
+                bean.setGame(rs.getString("GAME"));
+                bean.setSensitivity(rs.getString("SENSITIVITY"));
+                bean.setDpi(rs.getString("DPI"));
+                bean.setCm180(rs.getString("CM180"));
+                bean.setCm360(rs.getString("CM360"));
+                bean.setRegistered(rs.getString("REGISTERED"));
+                bean.setMouse(rs.getString("MOUSE"));
+                bean.setMousePad(rs.getString("MOUSEPAD"));
+                bean.setMouseSole(rs.getString("MOUSESOLE"));
+                bean.setMonitor(rs.getString("MONITOR"));
+                result.add(bean);
+                
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return result;
+    }
 	
 	public ArrayList<AllBean> selectAll() {
 		ArrayList<AllBean> result = new ArrayList<>();
