@@ -119,7 +119,7 @@
 			<div class="col" style="min-width: 350px;">
 				<div class="card my-2 mb-2 bg_body but-r card_border">
 					<div class="container text-center dt">
-						<h3 class="font-weight-bold">MyDvice</h3>
+						<h3 class="font-weight-bold">${data[0].userName }</h3>
 							<div class="card-body p-4">
 								<table class="custom-list">
 									<tr><th>マウス</th></tr>
