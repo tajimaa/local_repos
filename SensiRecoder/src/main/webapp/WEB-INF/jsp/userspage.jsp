@@ -130,7 +130,7 @@
 	<p>他ユーザーが実際に使っているAim関連のデバイスを見ることができます。</p>
 </div>	
 <div class="bg_m p-7 pt-3 minh">
-	<div class="float-right mr- mt-4 " style="width: 500px;">
+	<div class="float-right  mt-4 " style="width: 500px;">
 	    <div class="container mt-3">
 	        <form class="form-inline " action="<%=request.getContextPath() %>/sensi/searchCommand" method="get">
 	            <div class="form-group mr-3">

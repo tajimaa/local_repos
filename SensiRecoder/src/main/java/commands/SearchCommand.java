@@ -22,10 +22,16 @@ public class SearchCommand extends AbstractCommand {
 			resc.setTarget("sensi/userListCommand");
 			
 		} else {
-			AllBean bean = deviceDao.selectByUsername(game);
+			ArrayList<AllBean> list = deviceDao.selectAllByUsername(game);
 			
-			if(bean != null) {
-				result.add(bean);
+			String userName = null;
+			if(list != null) {
+				for(AllBean bean: list) {
+					if (!bean.getUserName().equals(userName)) {
+						result.add(bean);
+					}
+					userName = bean.getUserName();
+				}
 			}
 			
 			resc.setResult(result);

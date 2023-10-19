@@ -57,6 +57,38 @@ public class DevicetableDao {
     	return bean;
     }
     
+    public ArrayList<AllBean> selectAllByUsername(String name) {
+    	ArrayList<AllBean> result = new ArrayList<>();
+    	try {
+    		System.out.println("sbu: "+name);
+    		cn = om.getConnection(DB_USER, DB_PASS);
+    		ps = cn.prepareStatement(SELECT_BY_USERNAME);
+    		ps.setString(1, name);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				AllBean bean = new AllBean();
+            	bean.setUserName(rs.getString("UNAME"));
+                bean.setGame(rs.getString("GAME"));
+                bean.setSensitivity(rs.getString("SENSITIVITY"));
+                bean.setDpi(rs.getString("DPI"));
+                bean.setCm180(rs.getString("CM180"));
+                bean.setCm360(rs.getString("CM360"));
+                bean.setRegistered(rs.getString("REGISTERED"));
+                bean.setMouse(rs.getString("MOUSE"));
+                bean.setMousePad(rs.getString("MOUSEPAD"));
+                bean.setMouseSole(rs.getString("MOUSESOLE"));
+                bean.setMonitor(rs.getString("MONITOR"));
+                result.add(bean);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return result;
+    }
+    
 	public ArrayList<DeviceBean> selectAll() {
 		ArrayList<DeviceBean> result = new ArrayList<>();
 		try {
