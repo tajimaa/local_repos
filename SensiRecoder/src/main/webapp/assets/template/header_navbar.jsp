@@ -94,7 +94,7 @@
 		<nav class="navbar navbar-light">
 			<a class="navbar-brand text-dark font-weight-bold mr-1" href="<%=request.getContextPath() %>/homepage" >
     			<i class="fa-solid fa-crosshairs fa-xl mr-0" style="color:#001858;"></i> 
-    			<a href="<%=request.getContextPath() %>/homepage" style="color: #f582ae; font-size: 24px; font-weight: 700; text-decoration: none;" >Sensi</a><a href="<%=request.getContextPath() %>/homepage" style="font-size: 24px; font-weight: 700; text-decoration: none;">Recorder</a>
+    			<a href="<%=request.getContextPath() %>/homepage" style="color: #f582ae; font-size: 24px; font-weight: 700; text-decoration: none;" >Sensi</a><a href="<%=request.getContextPath() %>/homepage" style="color: #001858; font-size: 24px; font-weight: 700; text-decoration: none;">Recorder</a>
 			</a>
 
 		</nav>
