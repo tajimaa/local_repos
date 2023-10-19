@@ -23,8 +23,8 @@ public class SearchHistoryCommand extends AbstractCommand {
 		String game = reqc.getParameter("game")[0];
 		String name = ubean.getUserName();
 		System.out.println(name);
-		String sql = "select * from sensitable s left join devicetable d on s.uName = d.uName where d.uName = '" + name + "'";
-		String sql2 = "select * from sensitable s left join devicetable d on s.uName = d.uName where s.uName = '" + name + "' and game = ?";
+		String sql = "select * from sensitable s left join devicetable d on s.uName = d.uName where d.uName = '" + name + "' order by registered desc";
+		String sql2 = "select * from sensitable s left join devicetable d on s.uName = d.uName where s.uName = '" + name + "' and game = ? order by registered desc";
 		if (game.equals("default")) {
 			System.out.println(sql);
 			result = sensiDao.selectAll(sql);
