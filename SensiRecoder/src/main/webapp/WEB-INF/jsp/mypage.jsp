@@ -139,7 +139,7 @@
 		</form>
 			<div class="col-sm-8" style="min-width: 100px; background: #fef6e4">
 				<div class="container text-center dt">
-						<h3 class="font-weight-bold">MySensitivityHistory(仮の名前)</h3>
+						<h3 class="font-weight-bold">History</h3>
 					</div>
 						<table class="table" style="border-top: none;">
 							<tr>
