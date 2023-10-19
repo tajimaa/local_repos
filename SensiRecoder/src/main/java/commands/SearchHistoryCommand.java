@@ -34,7 +34,7 @@ public class SearchHistoryCommand extends AbstractCommand {
 		} else {
 			result = sensiDao.selectByGame(sql2, game);
 			
-			if(result != null) {
+			if(result.size() != 0) {
 				resc.setResult(result);
 				System.out.println("size: "+ result.size());
 				resc.setTarget("/mypage");
