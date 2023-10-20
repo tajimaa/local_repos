@@ -121,7 +121,10 @@
     .mt-15 {
     	margin-top: 150px;
     }
-	
+	.inline {
+		display: inline-block; 
+		_display: inline;
+	}
 </style>
 
 
@@ -133,7 +136,7 @@
 	<div class="float-right  mt-4 " style="width: 500px;">
 	    <div class="container mt-3">
 	        <form class="form-inline " action="<%=request.getContextPath() %>/sensi/searchCommand" method="get">
-	            <div class="form-group mr-3">
+	            <div class="form-group mr-3 text-right">
 	            	<select class="form-control card-border-none bg_body in b-l" id="mySelect" name="game">
 						<option value="default">デフォルト</option>
 						<option value="1v1.LOL">1v1.LOL</option>

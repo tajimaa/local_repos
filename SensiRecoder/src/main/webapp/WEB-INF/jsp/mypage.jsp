@@ -19,6 +19,9 @@
 		border: none;
 		background: #8bd3dd;
 	}
+	::hover {
+		background: #689ea6;
+	}
 	
 	.but-r {
 		border: none;
@@ -103,6 +106,16 @@
 		top: 30px;
 		left: 80px;
 	}
+	
+	.border {
+		border-radius: 10px;
+		border: none;
+		border: 10px;
+	}
+	
+	.inp {
+		text-align: right;
+	}
 
 </style>
 <!-- ここか下にコンテンツを書く -->
@@ -119,7 +132,7 @@
 			<div class="col" style="min-width: 350px;">
 				<div class="card my-2 mb-2 bg_body but-r card_border">
 					<div class="container text-center dt">
-						<h3 class="font-weight-bold">${data[0].userName }</h3>
+						<h3 class="font-weight-bold"><i class="fa-solid fa-user-astronaut fa-xl"></i>${data[0].userName }</h3>
 							<div class="card-body p-4">
 								<table class="custom-list">
 									<tr><th>マウス</th></tr>
@@ -131,19 +144,19 @@
 									<tr><th>モニター</th></tr>
 									<tr><td><input type="text" class="form-control-plaintext" name="monitor" value="${data[0].monitor}"></td></tr>
 								</table>
-								<input class="btn btn-primary btn-dark mr-2 bt-pos" type="submit" value="save">
+								<input class="btn btn-primary mr-2 bt-pos bg_bu" type="submit" value="save">
 							</div>
 						</div>
 				</div>
 			</div>
 		</form>
-			<div class="col-sm-8" style="min-width: 100px; background: #fef6e4">
+			<div class="col-sm-8 border mt-2 border-0" style="min-width: 100px; background: #fef6e4;">
 				<div class="container text-center dt">
 						<h3 class="font-weight-bold">History</h3>
 					</div>
-						<form class="form-inline " action="<%=request.getContextPath() %>/sensi/searchHistoryCommand" method="get">
-						            <div class="form-group mr-3">
-						            	<select class="form-control card-border-none bg_body in b-l" id="mySelect" name="game">
+						<form class="form-inline" action="<%=request.getContextPath() %>/sensi/searchHistoryCommand" method="get">
+							<div class="form-group mr-3">
+						            	<select class="form-control  bg_body in b-l" id="mySelect" name="game">
 											<option value="default">デフォルト</option>
 											<option value="1v1.LOL">1v1.LOL</option>
 											<option value="7_Days_to_Die">7_Days_to_Die</option>
@@ -183,7 +196,7 @@
 										</select>
 						            	<button type="submit" class="btn btn-primary b-r bg_bu form-control">検索</button>
 						            </div>
-						        </form>
+						</form>
 						<table class="table" style="border-top: none;">
 							<tr>
 								<th>ゲーム</th>
